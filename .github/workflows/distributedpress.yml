@@ -1,0 +1,19 @@
+name: Deploy to Distributed Press
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Publish to Distributed Press
+        uses: hyphacoop/actions-distributed-press@v1.1
+        with:
+          publish_dir: / # (optional) defaults to /public
+          dp_url: https://api.distributed.press
+          refresh_token: ${{ secrets.REFRESH_TOKEN }}
+          site_url: timewave.computer
+          deploy_http: false
+          deploy_hyper: true
+          deploy_ipfs: true
