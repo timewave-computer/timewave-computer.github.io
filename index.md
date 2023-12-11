@@ -5,6 +5,14 @@
 layout: home
 ---
 
+<style>
+.content {
+  font-family: 'Courier New', Courier, monospace;
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+}
+</style>
+
 We believe that crypto has laid the foundation for permissionless digital
 institutions that enable humanity to collaborate with unprecedented scope and
 scale.
