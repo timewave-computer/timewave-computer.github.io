@@ -2,27 +2,6 @@
 layout: home
 ---
 
-<style>
-body {
-  background-color: unset;
-}
-
-.content {
-  font-family: 'Courier New', Courier, monospace;
-  max-width: 520px;
-  margin: 2rem;
-  line-height: 1.2;
-  font-size: 1rem;
-}
-
-h1 {
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-}
-</style>
-
-# **Timewave**
-
 We believe that crypto has laid the foundation for permissionless digital
 institutions that enable humanity to collaborate with unprecedented scope and
 scale.

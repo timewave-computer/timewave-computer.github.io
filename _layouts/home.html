@@ -4,16 +4,25 @@
 {%- include head.html -%}
 
 <body>
-  <main class="home">
-    <div class="content">
-      {{ content }}
 
-      <a href="/blog"
-        style="display: block; margin-top: 3rem; font-size: 1.5rem;">
-        Blog
-      </a>
+  {%- include header.html -%}
+
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="home">
+        {{ content }}
+      </div>
     </div>
   </main>
+
+  <style>
+    .home {
+      font-family: 'Courier New', Courier, monospace;
+      line-height: 1.2;
+      font-size: 1rem;
+    }
+  </style>
+
 </body>
 
 </html>
