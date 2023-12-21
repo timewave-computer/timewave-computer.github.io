@@ -1,17 +1,27 @@
 ---
-# Feel free to add content and custom Front Matter to this file.
-# To modify the layout, see https://jekyllrb.com/docs/themes/#overriding-theme-defaults
-
 layout: home
 ---
 
 <style>
+body {
+  background-color: unset;
+}
+
 .content {
   font-family: 'Courier New', Courier, monospace;
-  margin-bottom: 2.5rem;
   max-width: 520px;
+  margin: 2rem;
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+h1 {
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
 }
 </style>
+
+# **Timewave**
 
 We believe that crypto has laid the foundation for permissionless digital
 institutions that enable humanity to collaborate with unprecedented scope and
@@ -28,3 +38,9 @@ Allocator, which includes tooling for the following:
 
 In our vision, all who endeavor to grow the interchain are limited only by their
 own imaginations and the laws of physics, not by tooling or resources.
+
+<br/>
+
+Twitter: [@timewavelabs](https://twitter.com/TimewaveLabs)
+
+© 2023 Timewave
