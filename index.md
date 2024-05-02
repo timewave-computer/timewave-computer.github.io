@@ -20,6 +20,10 @@ own imaginations and the laws of physics, not by tooling or resources.
 
 <br/>
 
+Apply to [Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
+
 Twitter: [@timewavelabs](https://twitter.com/TimewaveLabs)
 
-© 2023 Timewave
+Github: [timewave-computer](https://github.com/timewave-computer)
+
+© 2024 Timewave
