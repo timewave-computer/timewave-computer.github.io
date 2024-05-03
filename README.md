@@ -1,5 +1,7 @@
 # Timewave website
-Powered by Jekyll. Some components imported from jekyll [minima](https://github.com/jekyll/minima theme)
+Powered by Jekyll.
+
+Some components imported from jekyll [minima](https://github.com/jekyll/minima theme). Heads up, we are on minima 2.5 and the docs are for 3.0, so some things may be different.
 
 ## Local environment
 1. follow [jekyll set up instructions](https://jekyllrb.com/docs/)

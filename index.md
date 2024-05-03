@@ -1,7 +1,7 @@
 ---
 layout: home
 ---
-
+## Sacred timekeepers of the interchain
 We believe that crypto has laid the foundation for permissionless digital
 institutions that enable humanity to collaborate with unprecedented scope and
 scale.
@@ -21,9 +21,3 @@ own imaginations and the laws of physics, not by tooling or resources.
 <br/>
 
 Apply to [Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
-
-Twitter: [@timewavelabs](https://twitter.com/TimewaveLabs)
-
-Github: [timewave-computer](https://github.com/timewave-computer)
-
-© 2024 Timewave
