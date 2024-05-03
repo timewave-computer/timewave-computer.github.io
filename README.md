@@ -1,7 +1,9 @@
 # Timewave website
 Powered by Jekyll.
 
-Some components imported from jekyll [minima](https://github.com/jekyll/minima theme). Heads up, we are on minima 2.5 and the docs are for 3.0, so some things may be different.
+Some components imported from [jekyll minima theme](https://github.com/jekyll/minima/tree/2.5-stable).
+
+ **Warning**, we are on minima 2.5. Make sure to use [this branch](https://github.com/jekyll/minima/tree/2.5-stable) for docs. Any files or variables not found in here can be found in the minima repository.
 
 ## Local environment
 1. follow [jekyll set up instructions](https://jekyllrb.com/docs/)

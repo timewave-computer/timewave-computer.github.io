@@ -20,4 +20,4 @@ own imaginations and the laws of physics, not by tooling or resources.
 
 <br/>
 
-Apply to [Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
+[Apply to Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
