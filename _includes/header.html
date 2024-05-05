@@ -1,20 +1,20 @@
-<div role="banner" class="site-header" style="border:0px; margin:24px;">
+<link rel="stylesheet" href="/assets/css/styles.css">
+
+<div role="banner" class="site-header">
   <div class="wrapper">
-    <div style="
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-      ">
+    <div class="wrapper-inner">
+
       {%- assign default_paths = site.pages | map: "path" -%}
       {%- assign page_paths = site.header_pages | default: default_paths -%}
 
-      <a class="site-title" rel="author" style="text-decoration: none; display:flex; gap:6%" href="/">
-        {%- include logo.html -%}
-      </a>   
-        <a href="/blog" style="font-size: 1.2rem; color:black">
-          Blog
-        </a>
+      <div class="logo-wrapper">
+        <a class="logo-link" href="/">
+          <img class="logo-image" src="/assets/logo.png" alt="Bad Timewave logo"/>
+        </a> 
+        <a class="title-nav nav"  href="/">Timewave</a>
+      </div>
+      <a class="blog-nav nav" href="/blog">Blog</a>
+
     </div>
   </div>
 </div>
