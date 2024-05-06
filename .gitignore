@@ -28,3 +28,13 @@ creds.js
 *.tsv
 *.tsv.gz
 *.xlsx
+
+# jekyll
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+
+
+.DS_Store

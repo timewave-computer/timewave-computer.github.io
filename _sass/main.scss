@@ -1,0 +1,100 @@
+
+@import './header.scss';
+
+// BODY
+
+.wrapper {
+    max-width: calc(750px - (30px * 2));
+}
+
+
+body {
+    font-family: Arial;
+    color: black;
+}
+
+table, tr, td, th, thead, tbody {
+    border:none !important;
+}
+
+.post-header {
+    margin-bottom: 25px;
+}
+
+.post-meta {
+    color: black;
+    padding-top: 0.5rem;
+}
+
+.post-title {
+    font-family: courier;
+    font-size: 40px;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #d3d3d3;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+  p, li, a, a:visited {
+    color: black;
+}
+
+figcaption {
+    font-size:0.8rem;
+    text-align:center;
+}
+
+// FOOTER
+
+main a {
+    text-decoration: underline;
+}
+
+.site-footer {
+    border: 0px;
+    font-family: courier;
+}
+
+.social-media-list a:active {
+    text-decoration: underline;
+}
+
+.footer-col-3 {
+    text-align: right;
+}
+
+// POSTS
+
+.post-content h1 {
+    padding-top: 1.5rem;
+}
+
+// POST LIST
+
+.post-link {
+    color: black;
+    text-decoration: none;
+    font-family: courier;
+    padding-top: 0.3rem;
+    font-size: 1.3rem;
+}
+
+// 404
+
+.lost-container {
+    margin: 10px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+.lost-title {
+    margin: 30px 0;
+    font-size: 4em;
+    line-height: 1;
+    letter-spacing: -1px;
+}
