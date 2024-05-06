@@ -1,42 +1,5 @@
 
-// HEADER
-
-.site-header {
-    border:0px;
-    margin:24px;
-}
-
-.logo-link {
-    gap:4%;
-    display: inline-block;
-}
-
-.logo-image {
-    width: 8rem;
-    display: inline-block;
-}
-
-.nav, nav:visited {
-    font-size: 1.2rem;
-    color: black;
-}
-
-.title-nav, .title-nav:active {
-    font-size: 22px;
-    font-family: courier;
-    color: black;
-    text-align: left;
-    padding-left: 0.5rem;
-    text-decoration: none;
-}
-
-.blog-nav {
-    font-size: 22px;
-    font-family: courier;
-    color:black;
-    padding-right: 3.8rem;
-    padding-bottom: 0.3rem;
-}
+@import './header.scss';
 
 // BODY
 
@@ -44,12 +7,6 @@
     max-width: calc(750px - (30px * 2));
 }
 
-.wrapper-inner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
 
 body {
     font-family: Arial;

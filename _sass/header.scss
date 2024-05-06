@@ -1,0 +1,124 @@
+$on-medium: 600px !default;
+$border-color:#d3d3d3;
+
+.site-header {
+    border:0px;
+    margin-top:24px;
+}
+
+.header-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: no-wrap;
+    gap:1.4rem;
+}
+
+/***
+    LOGO
+*/
+.logo-wrapper {
+    text-decoration: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.logo-link {
+    gap:4%;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.logo-image {
+    width: 5rem;
+    display: inline-block;
+    min-width: 4rem;
+    @media screen and (min-width: $on-medium) {
+        visibility: visible;
+        display: flex;
+        width: 8rem;
+        margin-left: -1.4rem;
+    }
+}
+.title-nav, .title-nav:active {
+    font-size: 2rem;
+    font-family: courier;
+    color: black;
+    text-align: left;
+    padding-left: 0.5rem;
+    text-decoration: none;
+}
+
+
+/***
+    NAV
+*/
+.nav-text, nav:visited {
+    font-size: 1.4rem;
+    font-family: courier;
+    color:black;
+    padding-bottom: 0.3rem;
+    text-align: end;
+}
+
+.large-nav {
+    font-family: courier;
+    color:black;
+    padding-bottom: 0.3rem;
+    text-align: end;
+    visibility: hidden;
+    display: none;
+
+    @media screen and (min-width: $on-medium) {
+        visibility: visible;
+        display: flex;
+    }
+}
+
+/***
+    MOBILE NAV
+*/
+.hidden { // utility class
+    display: none;
+}
+
+#mobile-nav-menu {
+    position: absolute;
+    top: 4rem;
+    right: 1rem;
+    background-color: white;
+    border: 1px solid $border-color;
+    z-index: 1000;
+    border-radius: 0.2rem;
+}
+
+#mobile-nav-menu ul {
+    margin:0;
+    list-style-position: inside;
+    padding: .5rem;
+    padding-left: .8rem;
+    padding-right:0.8rem;
+    list-style: none;
+    font-size: 1.2rem;
+}
+  
+.mobile-nav {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+    border-color: $border-color;
+
+    @media screen and (min-width: $on-medium) {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+.menu-icon {
+    height: 16px
+}
