@@ -21,24 +21,24 @@ LRTs are committing to provide minimum amounts of security to AVSs for fixed dur
 
 *2. Underutilized capital*
 
-There is far more deposited capital seeking a return than AVSs providing rewards. Many AVSs only need security in excess of the value susceptible to attack (often a function of volume rather than locked capital). Sophisticated actors will corner capacity constrained opportunities. Otherwise poor capital efficiency will depress returns, causing depositors to exit the system.
+There is far more deposited capital seeking a return than AVSs providing rewards. Many AVSs only need security in excess of the value susceptible to attack, which is often a function of volume rather than locked capital. Sophisticated actors will corner capacity constrained opportunities. Additionally, poor capital efficiency will depress returns, causing depositors to exit the system.
 
 *3. Illiquid AVS tokens*
 
-As AVSs launch tokens they will need initial liquidity and price support, particularly as the sale of tokens will be used to cover operator costs until the service generates sufficient revenue. These tokens may be issued on the chain provisioning security, however, for reasons of accounting or sovereignty, many AVSs will opt to issue a token locally and then bridge the asset elsewhere for liquidity. Moreover, if the AVS hosts DeFi functionality, it may further require liquidity to provide competitive rates or execution quality as the application is brought to market.
+As AVSs launch tokens, they will need initial liquidity and price support, particularly as the sale of tokens will be used to cover operator costs until the service generates sufficient revenue. Moreover, if the AVS hosts DeFi functionality, it may further require liquidity to provide competitive rates or execution quality as the application is brought to market.
 
-*4. User acquisition*
+*4. Indirect user acquisition*
 
-While some AVSs provide backend services to other protocols, many others will require building a retail customer base. Purchasing restaked security is often a means to indirectly access users who have made LRT deposits, where airdrops act as a user acquisition channel. In fact, it’s unclear to what extent AVSs are paying for security vs. such auxiliary benefits valuable to their go-to-market. Executed poorly, these airdrops are costly, imprecise, and depress the AVS token price.
+While some AVSs provide backend services to other protocols, many others will require building a retail customer base. Purchasing restaked security is often a means to indirectly access users who have made LRT deposits, where airdrops act as a user acquisition channel. In fact, it is unclear to what extent AVSs are paying for security vs. such auxiliary benefits valuable to their go-to-market. Executed poorly, these airdrops are costly, imprecise, and depress the AVS token price.
 
-As we’ve seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with—upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, slashing claims adjudication—however this post will focus exclusively on addressing the four concerns above.
+As we have seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
 
 # The LRT solution space
 There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating the four identified problems above:
 
 *1. Managing duration with markets or rate limits*
 
-Some depositors may be willing to make durational commitments in return for higher rewards, particularly institutional players or DAOs with extended time horizons. With longer commitments on the depositor side, the LRT would be able to safely make commitments to AVSs with comparable duration. Committed capital could be modulated by issuing bonds of discrete lengths and reward allocations, thereby creating a market for interest rates. The rate of capital outflow could instead be controlled by dynamically adjusting an exit penalty. Alternatively, the LRT could put in place a withdrawal queue, and structure a market for exit priority.
+Some depositors may be willing to make durational commitments in return for higher rewards, particularly institutional players or DAOs with extended time horizons. With longer commitments on the depositor side, the LRT would be able to safely make commitments to AVSs with comparable duration. Committed capital could be modulated by issuing bonds of discrete lengths and reward allocations, thereby creating a market for interest rates. Alternatively, the LRT could put in place a withdrawal queue, and structure a market for exit priority.
 
 *2. Creating synthetic assets to maximize capital efficiency*
 
@@ -46,11 +46,11 @@ LRT protocols can reuse the capital backing their security guarantee as collater
 
 *3. Providing a facility for AVS liquidity*
 
-A key objective for AVSs is sourcing liquidity for the AVS’s native token. Rather than relying on a vague notion of alignment, LRTs can make their own treasury assets—or the synthetic assets they create—available to bootstrap liquidity for the AVS’s native token. The cost of liquidity provision could be expressed as an additional fee or amortized into the cost of AVS security provision. Taking this further, the LRT could also deploy the liquidity to strategically relevant destinations within the AVS’s DeFi economy, such as contributing to the supply side of a lending protocol to reduce interest rates and stimulate borrowing.
+A key objective for AVSs is sourcing liquidity for the AVS’s native token. Rather than relying on a vague notion of alignment, LRTs can make their own treasury assets—or the synthetic assets they create—available to bootstrap liquidity for the AVS’s native token. The cost of liquidity provisioning could be expressed as an additional fee or amortized into the cost of AVS security provision. Taking this further, the LRT could also deploy the liquidity to strategically relevant destinations within the AVS’s DeFi economy, such as contributing to the supply side of a lending protocol to reduce interest rates and stimulate borrowing.
 
 *4. Using token incentives to ensure user conversion*
 
-Any AVSs that focus on retail applications will want to convert LRT depositors into users. Here the LRT could help AVSs solve the last mile user conversion problem by making it easy for their depositors to bridge into the AVS and receive a reward multiplier for performing actions desirable for AVS growth and retention. By stimulating continued AVS activity, user deposits will also remain locked in the LRT, providing an additional buffer against duration risk.
+Any AVSs that focus on retail applications will want to convert LRT depositors into users. The LRT could help AVSs solve this last mile user conversion problem by making it easy for their depositors to bridge into the AVS and receive a reward multiplier for performing actions desirable for AVS growth and retention. By stimulating continued AVS activity, user deposits will also remain locked in the LRT, providing an additional buffer against duration risk.
 
 
 <figure>
@@ -92,7 +92,7 @@ With the assurance we obtain around the duration of depositor capital commitment
 
 By extending the points regime to address last mile user conversion, LRTs organically obtain longer user deposits, helping them manage duration. Simultaneously they can provide AVSs seeking users greater support in advancing their growth objectives.
 
-Our proposed LRT design space aims to give everyone more of what they want. AVSs get more liquidity and users alongside their security contract. Depositors get more rewards and are able to immediately utilize those rewards if a Pendle-style option is available. Meanwhile, LRTs are safer and make more money by attracting more deposits, engaging with a greater number of high quality AVSs, and charging for additional lines of business beyond security. Fundamentally, the way we achieve this is by recognizing that LRTs are not liquid instruments in the same way LSTs aim to be. Thus building financial primitives that incorporate some notion of duration, and building a depositor-base that has longer-term conviction is essential.
+Our proposed LRT design space aims to give everyone more of what they want. AVSs get more liquidity and users alongside their security contract. Depositors get more rewards and are able to immediately utilize those rewards if a Pendle-style option is available. Meanwhile, LRTs are safer and make more money by attracting more deposits, engaging with a greater number of high quality AVSs, and charging for additional lines of business beyond security. Fundamentally, the way we achieve this is by recognizing that LRTs are not liquid instruments in the same way LSTs aim to be. Thus, building financial primitives that incorporate some notion of duration and building a depositor-base that has longer-term conviction are essential.
 
 # Next steps
 
@@ -106,7 +106,7 @@ Timewave’s Rebalancer enables cross-chain balance sheet management. If you are
 
 *Come talk to us*
 
-Timewave team has experience designing and implementing the primary Cosmos liquid staking primitives and restaking system. Our technology facilitated the first ever trustless cross-chain agreements, and we’ve built tooling to streamline future agreements. Our products solve core pain points of deployed restaking systems. We have worked on every layer of the Cosmos stack and enjoy discussing where Cosmos may give a window into the future of other ecosystems. We would be happy to share our experience with you.
+Timewave team has experience designing and implementing the primary Cosmos liquid staking primitives and restaking system. Our technology facilitated the first ever trustless cross-chain agreements, and we have built tooling to streamline future agreements. Our products solve core pain points of deployed restaking systems. We have worked on every layer of the Cosmos stack and enjoy discussing where Cosmos may give a window into the future of other ecosystems. We would be happy to share our experience with you.
 
 <br>Our DMs are open: [@timewavelabs](https://twitter.com/TimewaveLabs)
 
