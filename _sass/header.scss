@@ -23,6 +23,10 @@ $border-color:#d3d3d3;
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+
+    @media screen and (min-width: $on-medium) {
+        margin-left: -1.4rem;
+    }
 }
 
 .logo-link {
@@ -39,7 +43,6 @@ $border-color:#d3d3d3;
         visibility: visible;
         display: flex;
         width: 8rem;
-        margin-left: -1.4rem;
     }
 }
 .title-nav, .title-nav:active {
@@ -49,6 +52,7 @@ $border-color:#d3d3d3;
     text-align: left;
     padding-left: 0.5rem;
     text-decoration: none;
+
 }
 
 
