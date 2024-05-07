@@ -2,11 +2,11 @@
 permalink: liquid-restaking-token
 layout: post
 title: "Building a liquid restaking token from first principles"
-date: 2024-05-01 11:10:00 -0700
+date: 2024-05-07 11:10:00 -0700
 
 ---
 
-*By Sam Hart and Max Einhorn — thank you to Myles O’Neil and Krane for their review*
+*By Sam Hart and Max Einhorn — thank you to Myles O’Neil, Krane, and Michael Ippolito for their review*
 
 ---
 
@@ -17,7 +17,7 @@ We’ll focus on four interrelated problems that LRTs could solve by modifying t
 
 *1. Duration mismatch*
 
-LRTs are committing to provide minimum amounts of security to AVSs for fixed durations. However, most LRT protocols have no controls for ensuring that depositors keep their capital deposited for the full duration of the security commitment. 
+LRTs are committing to provide minimum amounts of security to AVSs for fixed durations. However, most LRT protocols have no controls for ensuring that depositors keep their capital deposited for the full duration of the security commitment.
 
 *2. Underutilized capital*
 
@@ -34,7 +34,7 @@ While some AVSs provide backend services to other protocols, many others will re
 As we’ve seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with—upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, slashing claims adjudication—however this post will focus exclusively on addressing the four concerns above.
 
 # The LRT solution space
-There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating the four identified problems above: 
+There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating the four identified problems above:
 
 *1. Managing duration with markets or rate limits*
 
@@ -42,8 +42,8 @@ Some depositors may be willing to make durational commitments in return for high
 
 *2. Creating synthetic assets to maximize capital efficiency*
 
-LRT protocols can reuse the capital backing their security guarantee as collateral to mint synthetic tokens that are pegged 1-to-1 with the deposited assets (e.g., synthetic ETH pegged to raw ETH). Given the complexity of underwriting AVS slashing, the LRT will want to maintain a buffer between synthetic assets issued and the real asset backing to ensure price parity. Alternatively, the LRT could issue synthetic assets that float relative to a given amount of asset backing and avoid defending a peg. In our research, many LRTs are opting to issue a floating asset to depositors. However, by incorporating deposit durations as indicated above, LRTs can safely retain some portion of synthetic tokens and put them to work for periods consistent with their committed capital. 
- 
+LRT protocols can reuse the capital backing their security guarantee as collateral to mint synthetic tokens that are pegged 1-to-1 with the deposited assets (e.g., synthetic ETH pegged to raw ETH). Given the complexity of underwriting AVS slashing, the LRT will want to maintain a buffer between synthetic assets issued and the real asset backing to ensure price parity. Alternatively, the LRT could issue synthetic assets that float relative to a given amount of asset backing and avoid defending a peg. In our research, many LRTs are opting to issue a floating asset to depositors. However, by incorporating deposit durations as indicated above, LRTs can safely retain some portion of synthetic tokens and put them to work for periods consistent with their committed capital.
+
 *3. Providing a facility for AVS liquidity*
 
 A key objective for AVSs is sourcing liquidity for the AVS’s native token. Rather than relying on a vague notion of alignment, LRTs can make their own treasury assets—or the synthetic assets they create—available to bootstrap liquidity for the AVS’s native token. The cost of liquidity provision could be expressed as an additional fee or amortized into the cost of AVS security provision. Taking this further, the LRT could also deploy the liquidity to strategically relevant destinations within the AVS’s DeFi economy, such as contributing to the supply side of a lending protocol to reduce interest rates and stimulate borrowing.
@@ -65,7 +65,7 @@ There are numerous design decisions LRTs can make to differentiate their offerin
 
 *1. Payment conversion*
 
-Restaking protocols may require payment in the same denomination as that of the security or liquidity provided (e.g. ETH for security via EigenLayer), however AVSs will often need to pay using their native tokens. Thus the AVS will need a way to convert these tokens to the desired payment denomination with minimal price impact (hint, Timewave solves this). 
+Restaking protocols may require payment in the same denomination as that of the security or liquidity provided (e.g. ETH for security via EigenLayer), however AVSs will often need to pay using their native tokens. Thus the AVS will need a way to convert these tokens to the desired payment denomination with minimal price impact (hint, Timewave solves this).
 
 *2. Splitting principal from rewards (similar to Pendle)*
 
@@ -74,10 +74,10 @@ The LRT requires depositors to buy bonds with a duration to ensure that the capi
 *3. Variable security level*
 
 An AVS might not want a fixed amount of security, but rather lease some amount of security that correlates with the value of the assets or liabilities secured. In such cases, the LRT and AVS could agree on a fee schedule that would determine how the parties provide services to one another as the AVS grows and the market conditions evolve. Additionally, the agreement could denominate the variable security in crypto rather than in USD.
- 
+
 *4. Generating a yield curve*
 
-Most LRTs work with multiple AVSs who will want a variety of services and commitment durations. LRTs could translate the aggregate AVS demand for their services into a yield curve. Depositors would then decide the duration of their lockup based on the yield they are able to receive at various points along the yield curve. By increasing yield for durations with higher demand and lowering yield for durations with lower demand, LRTs can more efficiently match supply of depositor capital with AVS demand. 
+Most LRTs work with multiple AVSs who will want a variety of services and commitment durations. LRTs could translate the aggregate AVS demand for their services into a yield curve. Depositors would then decide the duration of their lockup based on the yield they are able to receive at various points along the yield curve. By increasing yield for durations with higher demand and lowering yield for durations with lower demand, LRTs can more efficiently match supply of depositor capital with AVS demand.
 
 
 # Building intuition
@@ -102,11 +102,11 @@ In Timewave’s restaking work to date, we have already seen liquidity sharing a
 
 *Balance sheet management*
 
-Timewave’s Rebalancer enables cross-chain balance sheet management. If you are an AVS seeking to pay an LRT in a token different from your native token or if you are an LRT that is interested in converting native AVS tokens into a different token, we would be happy to work with you to ensure your balance sheet needs are met. 
+Timewave’s Rebalancer enables cross-chain balance sheet management. If you are an AVS seeking to pay an LRT in a token different from your native token or if you are an LRT that is interested in converting native AVS tokens into a different token, we would be happy to work with you to ensure your balance sheet needs are met.
 
 *Come talk to us*
 
-Timewave team has experience designing and implementing the primary Cosmos liquid staking primitives and restaking system. Our technology facilitated the first ever trustless cross-chain agreements, and we’ve built tooling to streamline future agreements. Our products solve core pain points of deployed restaking systems. We have worked on every layer of the Cosmos stack and enjoy discussing where Cosmos may give a window into the future of other ecosystems. We would be happy to share our experience with you. 
+Timewave team has experience designing and implementing the primary Cosmos liquid staking primitives and restaking system. Our technology facilitated the first ever trustless cross-chain agreements, and we’ve built tooling to streamline future agreements. Our products solve core pain points of deployed restaking systems. We have worked on every layer of the Cosmos stack and enjoy discussing where Cosmos may give a window into the future of other ecosystems. We would be happy to share our experience with you.
 
 <br>Our DMs are open: [@timewavelabs](https://twitter.com/TimewaveLabs)
 
@@ -118,18 +118,18 @@ To understand the implications of the various architectural decisions made by th
 | -------- | ------- |
 | Amount of security that AVS wants  | $100mm   |
 | Length of security agreement | 1 year   |
-| LRT over-collateralization to maintain promised $USD level of security | 	20% | 
-| Interest AVS pays for synthetic ETH	 | 3% on borrowed synthetic ETH | 
-| Amount AVS pays for security	 | 2% on the USD amount of committed security  | 
-| Amount AVS offers depositors via points	 | 1% on depositor capital | 
-| LRT fee charged to depositors | 	0.5% of deposited capital | 
-|  LRT fee paid to restaking protocol	 | 0.25% of deposited capital | 
+| LRT over-collateralization to maintain promised $USD level of security | 	20% |
+| Interest AVS pays for synthetic ETH	 | 3% on borrowed synthetic ETH |
+| Amount AVS pays for security	 | 2% on the USD amount of committed security  |
+| Amount AVS offers depositors via points	 | 1% on depositor capital |
+| LRT fee charged to depositors | 	0.5% of deposited capital |
+|  LRT fee paid to restaking protocol	 | 0.25% of deposited capital |
 
-The design begins with an LRT protocol and an AVS that are interested in working together. The AVS wants security and liquidity. The LRT wants increased rewards so that it can attract more depositor capital, which will result in increased revenue for the LRT since it charges a fee on deposited capital. 
+The design begins with an LRT protocol and an AVS that are interested in working together. The AVS wants security and liquidity. The LRT wants increased rewards so that it can attract more depositor capital, which will result in increased revenue for the LRT since it charges a fee on deposited capital.
 
-Specifically, the AVS wants $100mm worth of security and $85mm worth of ETH liquidity for one year. The LRT satisfies these needs by selling $120mm worth of 1-year duration bonds to depositors—bond holders receive the profits made via security and liquidity lending. The LRT sells more than $100mm worth of bonds as a buffer to ensure that it will be able to continue meeting its $100mm security obligation to the AVS even if the price of ETH falls in dollar terms. The LRT does not have to worry about early depositor withdrawal because the depositors are locked for one year. The AVS pays the LRT 2% on the $USD amount of committed security annually for the security it is borrowing. 
+Specifically, the AVS wants $100mm worth of security and $85mm worth of ETH liquidity for one year. The LRT satisfies these needs by selling $120mm worth of 1-year duration bonds to depositors—bond holders receive the profits made via security and liquidity lending. The LRT sells more than $100mm worth of bonds as a buffer to ensure that it will be able to continue meeting its $100mm security obligation to the AVS even if the price of ETH falls in dollar terms. The LRT does not have to worry about early depositor withdrawal because the depositors are locked for one year. The AVS pays the LRT 2% on the $USD amount of committed security annually for the security it is borrowing.
 
-The LRT then creates $85mm worth of synthetic ETH using the $120mm of deposited ETH as collateral and uses the $85mm worth of synthetic ETH to bootstrap liquidity for the AVS’s native token. The difference between the amount of synthetic ETH that the LRT creates and the amount of raw ETH it has in collateral is the buffer that ensures that the peg between the synthetic ETH and real ETH remains stable. The AVS pays the 3% annual interest to the LRT for the liquidity that the LRT is using to bootstrap liquidity for the AVS’s native token. 
+The LRT then creates $85mm worth of synthetic ETH using the $120mm of deposited ETH as collateral and uses the $85mm worth of synthetic ETH to bootstrap liquidity for the AVS’s native token. The difference between the amount of synthetic ETH that the LRT creates and the amount of raw ETH it has in collateral is the buffer that ensures that the peg between the synthetic ETH and real ETH remains stable. The AVS pays the 3% annual interest to the LRT for the liquidity that the LRT is using to bootstrap liquidity for the AVS’s native token.
 
 To incentivize user adoption, the AVS also offers depositors a multiplier on the points depositors receive by engaging in desirable activity on the AVS (e.g., participating in DeFi). This multiplier results in sending depositors an additional 1% of the depositors’ capital back to the depositors in the form of points that will ultimately convert to token claims.
 
@@ -142,5 +142,5 @@ AVS pays LRT $2.55mm ($85mm * 3%) worth of tokens in interest over one year for 
 AVS pays $2mm ($100mm * 2%) worth of tokens to the LRT for security over one year
 AVS pays $1.2mm ($120mm * 1%) worth of points to the LRT depositors over one year
 The LRT pays the restaking protocol $300k ($120mm * 0.25%) for the use of the restaking protocol’s technology to provide security to the AVS over one year
-The LRT retains $600k in revenue ($120mm * 0.5%) over one year for engaging in all the activity necessary to generate the rewards that are high enough to attract $120mm worth of deposits. 
+The LRT retains $600k in revenue ($120mm * 0.5%) over one year for engaging in all the activity necessary to generate the rewards that are high enough to attract $120mm worth of deposits.
 Depositors receive total profit of $4.85mm over one year ($2.55mm + $2mm + $1.2mm - $300k - $600k), which is means a 4.04% rewards rate ($4.85mm / $120mm)
