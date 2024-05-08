@@ -6,7 +6,7 @@ date: 2024-05-07 11:10:00 -0700
 
 ---
 
-*By Sam Hart and Max Einhorn — thank you to Myles O’Neil, Krane, and Michael Ippolito for their review*
+*By Sam Hart and Max Einhorn — thank you to Myles O’Neil, Krane, and Michael Ippolito for their thoughtful review*
 
 ---
 
@@ -32,7 +32,7 @@ As AVSs launch tokens, they will need initial liquidity and price support, parti
 
 While some AVSs provide backend services to other protocols, many others will require building a retail customer base. Purchasing restaked security is often a means to indirectly access users who have made LRT deposits, where airdrops act as a user acquisition channel. In fact, it is unclear to what extent AVSs are paying for security vs. such auxiliary benefits valuable to their go-to-market. Executed poorly, these airdrops are costly, imprecise, and depress the AVS token price.
 
-As we have seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
+As we have seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, and slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
 
 # The LRT solution space
 
@@ -40,7 +40,7 @@ There are several key architectural patterns available to LRTs, which together e
 
 *1. Managing duration with markets or rate limits*
 
-Some depositors may be willing to make durational commitments in return for higher rewards, particularly institutional players or DAOs with extended time horizons. With longer commitments on the depositor side, the LRT would be able to safely make commitments to AVSs with comparable duration. Committed capital could be modulated by issuing bonds of discrete lengths and reward allocations, thereby creating a market for interest rates. Alternatively, the LRT could put in place a withdrawal queue, and structure a market for exit priority.
+Some depositors may be willing to make durational commitments in return for higher rewards, particularly institutional players or DAOs with extended time horizons. With longer commitments on the depositor side, the LRT would be able to safely make commitments to AVSs with comparable duration. Committed capital could be modulated by issuing bonds of discrete lengths and fractional reward allocations, thereby creating a market for interest rates. Alternatively, the LRT could put in place a withdrawal queue, and structure a market for exit priority.
 
 *2. Creating synthetic assets to maximize capital efficiency*
 
