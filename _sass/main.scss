@@ -1,6 +1,8 @@
 
 @import './header.scss';
 
+$small: 600px;
+
 // BODY
 
 .wrapper {
@@ -49,7 +51,37 @@ figcaption {
     text-align:center;
 }
 
+figure {
+    padding-bottom: 0.5rem;
+}
+
 // FOOTER
+
+@media screen and (max-width: $small) {
+
+    .footer-col {
+        
+    }
+    .footer-col-1 {
+
+    }
+    .footer-col-2 {
+        display: none;
+    }
+    .footer-col-3 {
+        text-align: left !important;
+    }
+    .social-links li:first-child {
+        padding-bottom: 0.5rem;
+    }
+
+}
+
+@media screen and (min-width: $small) {
+    .footer-col {
+        width: calc(33% - (30px / 2))
+    }
+}
 
 main a {
     text-decoration: underline;
