@@ -14,6 +14,4 @@ lending to one another.
 Timewave envisions a world where those who participate in the network economy are limited
 only by their imaginations and the laws of physics.
 
-<br/>
-
-[Apply to Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
+<br/>[Apply to Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)

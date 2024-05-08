@@ -23,6 +23,17 @@ table, tr, td, th, thead, tbody {
     margin-bottom: 25px;
 }
 
+
+.title-nav, .title-nav:active, .title-nav:hover {
+    font-size: 25px;
+    padding-bottom: 0.3rem;
+}
+
+.nav-text {
+    font-size: 25px;
+    margin-right: 1.5rem;
+}
+
 .post-meta {
     color: black;
     padding-top: 0.5rem;

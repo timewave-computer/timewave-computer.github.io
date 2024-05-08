@@ -13,6 +13,7 @@ date: 2024-05-07 11:10:00 -0700
 Liquid restaking tokens (LRTs) are intermediary protocols built on top of slashing and execution primitives provided by restaking protocols, such as EigenLayer. The LRT protocol takes deposits from users and delegates those deposits to operators who in turn allocate this slashable collateral to a set of AVSs. The job of an LRT is to find promising AVSs and negotiate security agreements with them in exchange for a fixed portion of supply and ongoing rewards (e.g., airdrops, AVS token inflation, transaction fees, MEV, protocol fees). LRTs then pass these rewards back to depositors while pocketing a service fee. The designs of these LRTs vary in AVS contract structure, depositor incentives, and internalization of risk within the LRT asset construction. However, in speaking with many LRTs, we have found that most of their designs will make it impossible for them to uphold their commitments to their counterparties and will put the LRT’s solvency at risk. Moreover, in these conversations, we have identified gaps in the existing market structure for managing duration, efficiently utilizing capital, providing initial liquidity, and onboarding users, all of which will need to be addressed before the restaking market finds equilibrium. In this post, we articulate design decisions that LRTs can make to close these gaps.
 
 # The gap between current LRT designs and the market
+
 We’ll focus on four interrelated problems that LRTs could solve by modifying their protocol architecture to accommodate the prevailing market structure:
 
 *1. Duration mismatch*
@@ -34,6 +35,7 @@ While some AVSs provide backend services to other protocols, many others will re
 As we have seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payments structures, competitive dynamics among secured applications, efficient liquidation, slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
 
 # The LRT solution space
+
 There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating the four identified problems above:
 
 *1. Managing duration with markets or rate limits*
@@ -52,12 +54,10 @@ A key objective for AVSs is sourcing liquidity for the AVS’s native token. Rat
 
 Any AVSs that focus on retail applications will want to convert LRT depositors into users. The LRT could help AVSs solve this last mile user conversion problem by making it easy for their depositors to bridge into the AVS and receive a reward multiplier for performing actions desirable for AVS growth and retention. By stimulating continued AVS activity, user deposits will also remain locked in the LRT, providing an additional buffer against duration risk.
 
-
 <figure>
   <img src="{{site.url}}/assets/liquid-restaking/lrt_cycle.png" alt="protocol relationships diagram"/>
   <figcaption>Figure 1. Introducing new protocol relationships to address the needs of Depositors, AVSs, and LRTs together.</figcaption>
 </figure>
-
 
 # Additional design considerations
 
@@ -81,6 +81,7 @@ Most LRTs work with multiple AVSs who will want a variety of services and commit
 
 
 # Building intuition
+
 <figure>
   <img src="{{site.url}}/assets/liquid-restaking/lrt_avs.png" alt="LRT-AVS diagram"/>
   <figcaption>Figure 2. Schematic of an LRT balancing AVS service demand and deposit duration.</figcaption>
