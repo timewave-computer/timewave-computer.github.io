@@ -36,7 +36,7 @@ As we have seen with the Cosmos Hub’s Interchain Security offering, there are 
 
 # The LRT solution space
 
-There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating the four identified problems above:
+There are several key architectural patterns available to LRTs, which together encompass a large design space for alleviating our four identified problems:
 
 *1. Managing duration with markets or rate limits*
 
