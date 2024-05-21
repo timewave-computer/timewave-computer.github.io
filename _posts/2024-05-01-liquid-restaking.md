@@ -138,10 +138,10 @@ The LRT passes all revenue generated via the 3% liquidity interest, 2% security 
 
 To summarize, the AVS-LRT deal mechanics consist of the following:
 
-LRT sells $120mm ($100mm * 120%) worth of 1-year duration bonds to depositors
-AVS pays LRT $2.55mm ($85mm * 3%) worth of tokens in interest over one year for the LRT’s bootstrapping of the AVS’s native token
-AVS pays $2mm ($100mm * 2%) worth of tokens to the LRT for security over one year
-AVS pays $1.2mm ($120mm * 1%) worth of points to the LRT depositors over one year
-The LRT pays the restaking protocol $300k ($120mm * 0.25%) for the use of the restaking protocol’s technology to provide security to the AVS over one year
-The LRT retains $600k in revenue ($120mm * 0.5%) over one year for engaging in all the activity necessary to generate the rewards that are high enough to attract $120mm worth of deposits.
-Depositors receive total profit of $4.85mm over one year ($2.55mm + $2mm + $1.2mm - $300k - $600k), which is means a 4.04% rewards rate ($4.85mm / $120mm)
+- LRT sells $120mm ($100mm * 120%) worth of 1-year duration bonds to depositors.
+- AVS pays LRT $2.55mm ($85mm * 3%) worth of tokens in interest over one year for the LRT’s bootstrapping of the AVS’s native token.
+- AVS pays $2mm ($100mm * 2%) worth of tokens to the LRT for security over one year.
+- AVS pays $1.2mm ($120mm * 1%) worth of points to the LRT depositors over one year.
+- The LRT pays the restaking protocol $300k ($120mm * 0.25%) for the use of the restaking protocol’s technology to provide security to the AVS over one year.
+- The LRT retains $600k in revenue ($120mm * 0.5%) over one year for engaging in all the activity necessary to generate the rewards that are high enough to attract $120mm worth of deposits.
+- Depositors receive total profit of $4.85mm over one year ($2.55mm + $2mm + $1.2mm - $300k - $600k), which is means a 4.04% rewards rate ($4.85mm / $120mm).
