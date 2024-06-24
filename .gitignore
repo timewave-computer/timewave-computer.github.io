@@ -38,3 +38,6 @@ vendor
 
 
 .DS_Store
+
+# for local scratch files
+scratch/*
