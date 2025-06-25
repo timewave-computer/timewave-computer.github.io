@@ -1,14 +1,14 @@
 ---
 layout: home
 ---
-## The next generation of crypto will be defined by natively cross-chain applications. If your team is tackling this frontier, we'd like to hear from you.
+## The next generation of crypto will be defined by natively cross-chain applications. If you're building at that frontier, let's talk.
 
 Timewave is an R&D studio for verifiable distributed systems. Crypto's promise is a single, networked economy built on permissionless institutions. We architect the infrastructure that makes this future possible.
 
-Building across blockchains is one of the hardest engineering challenges in crypto today. We know this because we've spent years in the trenches solving it. Our team has built four generations of multi-domain infrastructure, tackling everything from asynchronous execution to inconsistent security models. Today, we are core contributors and the most demanding super-users of [Valence Protocol](https://www.valence.zone/). Our goal is to make Valence the fastest way to build and scale cross-chain applications. 
+Building across blockchains is one of the hardest engineering challenges in crypto today. We know this because we've spent years in the trenches solving it. Our team has built four generations of multi-domain infrastructure, tackling everything from asynchronous execution to inconsistent security models. Today, we are core contributors and the most demanding super-users of [Valence Protocol](https://www.valence.zone/), the fastest way to build and scale cross-chain applications. 
 
 
-## Our team specializes in building sophisticated, *natively cross-chain* systems.
+## We build systems that dissolve the boundaries between blockchains.
 
 <style>
 .responsive-grid {
@@ -52,7 +52,7 @@ Building across blockchains is one of the hardest engineering challenges in cryp
     <h3>Product Areas</h3>
     <ul>
       <li>Cross-chain vaults and yield strategies</li>
-      <li>Autonomous treasury and liquidity management systems</li>
+      <li>Autonomous treasury and liquidity management</li>
       <li>Multi-chain governance and monetary policy</li>
       <li>Multi-domain market infrastructure</li>
       <li>Cross-chain token launches</li>
@@ -63,7 +63,7 @@ Building across blockchains is one of the hardest engineering challenges in cryp
     <h3>Capabilities</h3>
     <ul>
       <li>Multi-chain architecture</li>
-      <li>Asynchronous and fault tolerant systems design</li>
+      <li>Asynchronous and fault tolerant systems</li>
       <li>Multi-VM contract engineering</li>
       <li>Custom ZK circuit development</li>
       <li>Deep protocol and bridge integrations</li>
@@ -80,9 +80,9 @@ Building across blockchains is one of the hardest engineering challenges in cryp
       <li>Rust</li>
       <li>Nix</li>
       <li>Valence programs</li>
-      <li>Valence ZK coprocessor applications</li>
+      <li>Valence ZK coprocessor apps</li>
       <li>Typescript + NextJS</li>
-      <li>Custom E2E test suite</li>
+      <li>Custom end-to-end test suite</li>
     </ul>
   </div>
 </div>
