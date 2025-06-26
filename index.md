@@ -56,20 +56,19 @@ Building across blockchains is one of the hardest engineering challenges in cryp
       <li>Multi-chain governance and monetary policy</li>
       <li>Multi-domain market infrastructure</li>
       <li>Cross-chain token launches</li>
+      <li>Chain abstraction</li>
     </ul>
   </div>
   
   <div>
     <h3>Capabilities</h3>
     <ul>
-      <li>Multi-chain architecture</li>
+      <li>Multi-chain protocol architecture</li>
       <li>Asynchronous and fault tolerant systems</li>
       <li>Multi-VM contract engineering</li>
       <li>Custom ZK circuit development</li>
       <li>Deep protocol and bridge integrations</li>
-      <li>Chain abstraction</li>
-      <li>Protocol architecture and mechanism design</li>
-      <li>Market design</li>
+      <li>Market and mechanism design</li>
       <li>Product and UI</li>
     </ul>
   </div>
