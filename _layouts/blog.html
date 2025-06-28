@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{%- include head.html -%}
+
+<body class="xanadu-body">
+  
+  <!-- Analog Clock - Background Layer -->
+  <div class="analog-clock">
+    <div class="clock-face">
+      <div class="hour-hand"></div>
+      <div class="minute-hand"></div>
+      <div class="second-hand"></div>
+    </div>
+  </div>
+
+  <div class="blog-container">
+    <header class="blog-header">
+      <h1><a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a></h1>
+      <nav>
+        <a href="{{ "/" | relative_url }}">Home</a>
+        <a href="{{ "/blog.html" | relative_url }}" class="current">Blog</a>
+      </nav>
+    </header>
+
+    <main class="blog-content">
+      {{ content }}
+    </main>
+  </div>
+
+  <script>
+    // Analog Clock Functionality
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours() % 12;
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+      
+      // Calculate angles (360 degrees = full circle)
+      const hourAngle = (hours * 30) + (minutes * 0.5); // 30 degrees per hour + minute adjustment
+      const minuteAngle = minutes * 6; // 6 degrees per minute
+      const secondAngle = seconds * 6; // 6 degrees per second
+      
+      // Apply rotations
+      const hourHand = document.querySelector('.hour-hand');
+      const minuteHand = document.querySelector('.minute-hand');
+      const secondHand = document.querySelector('.second-hand');
+      
+      if (hourHand && minuteHand && secondHand) {
+        hourHand.style.transform = `rotate(${hourAngle}deg)`;
+        minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
+        secondHand.style.transform = `rotate(${secondAngle}deg)`;
+      }
+    }
+    
+    // Update clock immediately and then every second
+    updateClock();
+    setInterval(updateClock, 1000); // Update every second
+  </script>
+
+</body>
+</html> 
