@@ -20,6 +20,39 @@ $highlight-pink: #ffccff;     // Light pink
 $highlight-orange: #ffcc99;   // Light orange
 $highlight-cyan: #ccffff;     // Light cyan
 
+// Cluster color mapping for DRY code
+$cluster-colors: (
+  "user-experience": darken($highlight-yellow, 30%),
+  "systems-engineering": darken($highlight-green, 30%),
+  "governance-systems": darken($highlight-blue, 30%),
+  "architecture-design": darken($highlight-pink, 30%),
+  "protocol-framework": darken($highlight-orange, 30%),
+  "market-infrastructure": darken($highlight-cyan, 30%),
+  "defi-infrastructure": darken($highlight-yellow, 30%),
+  "treasury-management": darken($highlight-green, 30%),
+  "core-languages": darken($highlight-blue, 30%),
+  "cryptography": darken($highlight-pink, 30%),
+  "contract-development": darken($highlight-orange, 30%),
+  "testing-infrastructure": darken($highlight-cyan, 30%),
+  "dev-environment": darken($highlight-yellow, 30%),
+  "frontend-tech": darken($highlight-green, 30%),
+  "integration-expertise": darken($highlight-blue, 30%),
+  "economic-design": darken($highlight-pink, 30%),
+  "token-systems": darken($highlight-orange, 30%)
+);
+
+// Definition term color mapping for DRY code
+$definition-colors: (
+  "cross-chain-applications": ($highlight-yellow, darken($highlight-yellow, 30%)),
+  "verifiable-distributed-systems": ($highlight-green, darken($highlight-green, 30%)),
+  "permissionless-digital-institutions": ($highlight-blue, darken($highlight-blue, 30%)),
+  "multi-domain-infrastructure": ($highlight-pink, darken($highlight-pink, 30%)),
+  "valence": ($highlight-orange, darken($highlight-orange, 30%)),
+  "interchain": ($highlight-cyan, darken($highlight-cyan, 30%)),
+  "protocol-to-protocol-lending": ($highlight-yellow, darken($highlight-yellow, 30%)),
+  "global-liquidity-interoperability": ($highlight-green, darken($highlight-green, 30%))
+);
+
 // Typography - serif font to match original
 $xanadu-font: 'Times New Roman', Times, serif;
 $xanadu-font-size: 12px;
@@ -164,7 +197,7 @@ $tablet: 1024px;
     top: 8%;
     left: 8%;
     width: 380px;
-    height: 520px;
+    height: 550px;
     z-index: 10;
     
     @media (max-width: $mobile) {
@@ -412,24 +445,12 @@ $tablet: 1024px;
     opacity: 1;
   }
   
-  // Cluster-based underline colors
-  &[data-cluster="user-experience"]::after { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="systems-engineering"]::after { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="governance-systems"]::after { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="architecture-design"]::after { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="protocol-framework"]::after { background-color: darken($highlight-orange, 30%); }
-  &[data-cluster="market-infrastructure"]::after { background-color: darken($highlight-cyan, 30%); }
-  &[data-cluster="defi-infrastructure"]::after { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="treasury-management"]::after { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="core-languages"]::after { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="cryptography"]::after { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="contract-development"]::after { background-color: darken($highlight-orange, 30%); }
-  &[data-cluster="testing-infrastructure"]::after { background-color: darken($highlight-cyan, 30%); }
-  &[data-cluster="dev-environment"]::after { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="frontend-tech"]::after { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="integration-expertise"]::after { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="economic-design"]::after { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="token-systems"]::after { background-color: darken($highlight-orange, 30%); }
+  // Generate cluster-based underline colors using map
+  @each $cluster, $color in $cluster-colors {
+    &[data-cluster="#{$cluster}"]::after { 
+      background-color: $color; 
+    }
+  }
   
   &:hover, &.highlighted {
     &::after {
@@ -438,24 +459,13 @@ $tablet: 1024px;
     }
   }
   
-  // Cluster-based background highlighting on hover - full opacity
-  &[data-cluster="user-experience"]:hover, &[data-cluster="user-experience"].highlighted { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="systems-engineering"]:hover, &[data-cluster="systems-engineering"].highlighted { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="governance-systems"]:hover, &[data-cluster="governance-systems"].highlighted { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="architecture-design"]:hover, &[data-cluster="architecture-design"].highlighted { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="protocol-framework"]:hover, &[data-cluster="protocol-framework"].highlighted { background-color: darken($highlight-orange, 30%); }
-  &[data-cluster="market-infrastructure"]:hover, &[data-cluster="market-infrastructure"].highlighted { background-color: darken($highlight-cyan, 30%); }
-  &[data-cluster="defi-infrastructure"]:hover, &[data-cluster="defi-infrastructure"].highlighted { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="treasury-management"]:hover, &[data-cluster="treasury-management"].highlighted { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="core-languages"]:hover, &[data-cluster="core-languages"].highlighted { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="cryptography"]:hover, &[data-cluster="cryptography"].highlighted { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="contract-development"]:hover, &[data-cluster="contract-development"].highlighted { background-color: darken($highlight-orange, 30%); }
-  &[data-cluster="testing-infrastructure"]:hover, &[data-cluster="testing-infrastructure"].highlighted { background-color: darken($highlight-cyan, 30%); }
-  &[data-cluster="dev-environment"]:hover, &[data-cluster="dev-environment"].highlighted { background-color: darken($highlight-yellow, 30%); }
-  &[data-cluster="frontend-tech"]:hover, &[data-cluster="frontend-tech"].highlighted { background-color: darken($highlight-green, 30%); }
-  &[data-cluster="integration-expertise"]:hover, &[data-cluster="integration-expertise"].highlighted { background-color: darken($highlight-blue, 30%); }
-  &[data-cluster="economic-design"]:hover, &[data-cluster="economic-design"].highlighted { background-color: darken($highlight-pink, 30%); }
-  &[data-cluster="token-systems"]:hover, &[data-cluster="token-systems"].highlighted { background-color: darken($highlight-orange, 30%); }
+  // Generate cluster-based background highlighting on hover using map  
+  @each $cluster, $color in $cluster-colors {
+    &[data-cluster="#{$cluster}"]:hover, 
+    &[data-cluster="#{$cluster}"].highlighted { 
+      background-color: $color; 
+    }
+  }
 }
 
 // Styles for product items, capability items, and blog items
@@ -549,57 +559,11 @@ $tablet: 1024px;
     opacity: 1;
   }
   
-  // Different line colors for different cluster types - matching underline colors exactly
-  &[data-connection="user-experience"] { 
-    background: darken($highlight-yellow, 30%);
-  }
-  &[data-connection="systems-engineering"] { 
-    background: darken($highlight-green, 30%);
-  }
-  &[data-connection="governance-systems"] { 
-    background: darken($highlight-blue, 30%);
-  }
-  &[data-connection="architecture-design"] { 
-    background: darken($highlight-pink, 30%);
-  }
-  &[data-connection="protocol-framework"] { 
-    background: darken($highlight-orange, 30%);
-  }
-  &[data-connection="market-infrastructure"] { 
-    background: darken($highlight-cyan, 30%);
-  }
-  &[data-connection="defi-infrastructure"] { 
-    background: darken($highlight-yellow, 30%);
-  }
-  &[data-connection="treasury-management"] { 
-    background: darken($highlight-green, 30%);
-  }
-  &[data-connection="core-languages"] { 
-    background: darken($highlight-blue, 30%);
-  }
-  &[data-connection="cryptography"] { 
-    background: darken($highlight-pink, 30%);
-  }
-  &[data-connection="contract-development"] { 
-    background: darken($highlight-orange, 30%);
-  }
-  &[data-connection="testing-infrastructure"] { 
-    background: darken($highlight-cyan, 30%);
-  }
-  &[data-connection="dev-environment"] { 
-    background: darken($highlight-yellow, 30%);
-  }
-  &[data-connection="frontend-tech"] { 
-    background: darken($highlight-green, 30%);
-  }
-  &[data-connection="integration-expertise"] { 
-    background: darken($highlight-blue, 30%);
-  }
-  &[data-connection="economic-design"] { 
-    background: darken($highlight-pink, 30%);
-  }
-  &[data-connection="token-systems"] { 
-    background: darken($highlight-orange, 30%);
+  // Generate connection line colors using map - matching underline colors exactly
+  @each $cluster, $color in $cluster-colors {
+    &[data-connection="#{$cluster}"] { 
+      background: $color;
+    }
   }
 }
 
@@ -623,60 +587,13 @@ $tablet: 1024px;
   cursor: pointer;
   position: relative;
   
-  // Matching highlight colors for definitions
-  &[data-term="cross-chain-applications"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-yellow;
-      border-left-color: darken($highlight-yellow, 30%);
-    }
-  }
-  
-  &[data-term="verifiable-distributed-systems"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-green;
-      border-left-color: darken($highlight-green, 30%);
-    }
-  }
-  
-  &[data-term="permissionless-digital-institutions"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-blue;
-      border-left-color: darken($highlight-blue, 30%);
-    }
-  }
-  
-  &[data-term="multi-domain-infrastructure"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-pink;
-      border-left-color: darken($highlight-pink, 30%);
-    }
-  }
-  
-  &[data-term="valence"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-orange;
-      border-left-color: darken($highlight-orange, 30%);
-    }
-  }
-  
-  &[data-term="interchain"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-cyan;
-      border-left-color: darken($highlight-cyan, 30%);
-    }
-  }
-  
-  &[data-term="protocol-to-protocol-lending"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-yellow;
-      border-left-color: darken($highlight-yellow, 30%);
-    }
-  }
-  
-  &[data-term="global-liquidity-interoperability"] {
-    &:hover, &.highlighted {
-      background-color: $highlight-green;
-      border-left-color: darken($highlight-green, 30%);
+  // Generate definition term highlight colors using map
+  @each $term, $colors in $definition-colors {
+    &[data-term="#{$term}"] {
+      &:hover, &.highlighted {
+        background-color: nth($colors, 1);
+        border-left-color: nth($colors, 2);
+      }
     }
   }
   
