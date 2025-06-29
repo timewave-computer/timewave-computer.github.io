@@ -41,3 +41,8 @@ vendor
 
 # for local scratch files
 scratch/*
+
+# nix
+.direnv/
+result
+result-*

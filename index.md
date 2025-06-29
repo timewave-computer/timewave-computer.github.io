@@ -1,89 +1,17 @@
 ---
-layout: home
+layout: xanadu
 ---
-## The next generation of crypto will be defined by natively cross-chain applications. If you're building at that frontier, let's talk.
+## The next generation of crypto will be defined by natively <span class="highlight-term" data-cluster="user-experience" data-term="cross-chain-apps">cross-chain applications</span>. If you're building at that frontier, let's talk.
 
-Timewave is an R&D studio for verifiable distributed systems. Crypto's promise is a single, networked economy built on permissionless institutions. We architect the infrastructure that makes this future possible.
+Timewave is an R&D studio for <span class="highlight-term" data-cluster="systems-engineering" data-term="distributed-systems">verifiable distributed systems</span>. Crypto's promise is a single, networked economy built on <span class="highlight-term" data-cluster="governance-systems" data-term="permissionless-institutions">permissionless institutions</span>. We architect the infrastructure that makes this future possible.
 
-Building across blockchains is one of the hardest engineering challenges in crypto today. We know this because we've spent years in the trenches solving it. Our team has built four generations of multi-domain infrastructure, tackling everything from asynchronous execution to inconsistent security models. Today, we are core contributors and the most demanding super-users of [Valence Protocol](https://www.valence.zone/), the fastest way to build and scale cross-chain applications. 
+Building across blockchains is one of the hardest engineering challenges in crypto today. We know this because we've spent years in the trenches solving it. Our team has built four generations of <span class="highlight-term" data-cluster="architecture-design" data-term="multi-domain-infra">multi-domain infrastructure</span>, tackling everything from <span class="highlight-term" data-cluster="systems-engineering" data-term="async-execution">asynchronous execution</span> to inconsistent security models. Today, we are core contributors and the most demanding super-users of <span class="highlight-term" data-cluster="protocol-framework" data-term="valence-protocol">Valence Protocol</span>, the fastest way to build and scale cross-chain applications.
 
 
 ## We build systems that dissolve the boundaries between blockchains.
 
-<style>
-.responsive-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  background-color: transparent;
-}
+Our focus areas span the full spectrum of <span class="highlight-term" data-cluster="market-infrastructure" data-term="interchain-innovation">interchain innovation</span>, from <span class="highlight-term" data-cluster="defi-infrastructure" data-term="protocol-lending">protocol-to-protocol lending</span> to <span class="highlight-term" data-cluster="treasury-management" data-term="liquidity-systems">global liquidity interoperability</span>.
 
-.responsive-grid > div {
-  background-color: transparent;
-}
+We combine cutting-edge <span class="highlight-term" data-cluster="core-languages" data-term="rust-programming">Rust systems programming</span> with <span class="highlight-term" data-cluster="cryptography" data-term="zk-tech">zero-knowledge cryptography</span> to create <span class="highlight-term" data-cluster="contract-development" data-term="smart-contracts">next-generation smart contracts</span>. Our <span class="highlight-term" data-cluster="testing-infrastructure" data-term="test-framework">comprehensive testing infrastructure</span> ensures reliability across all blockchain networks.
 
-.responsive-grid h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 1em;
-  font-weight: normal;
-  text-decoration: underline;
-}
-
-.responsive-grid ul {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.responsive-grid li {
-  margin-bottom: 4px;
-}
-
-@media (max-width: 768px) {
-  .responsive-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-}
-</style>
-
-<div class="responsive-grid">
-  <div>
-    <h3>Product Areas</h3>
-    <ul>
-      <li>Cross-chain vaults and yield strategies</li>
-      <li>Autonomous treasury and liquidity management</li>
-      <li>Multi-chain governance and monetary policy</li>
-      <li>Multi-domain market infrastructure</li>
-      <li>Cross-chain token launches</li>
-      <li>Chain abstraction</li>
-    </ul>
-  </div>
-  
-  <div>
-    <h3>Capabilities</h3>
-    <ul>
-      <li>Multi-chain protocol architecture</li>
-      <li>Asynchronous and fault tolerant systems</li>
-      <li>Multi-VM contract engineering</li>
-      <li>Custom ZK circuit development</li>
-      <li>Deep protocol and bridge integrations</li>
-      <li>Market and mechanism design</li>
-      <li>Product and UI</li>
-    </ul>
-  </div>
-  
-  <div>
-    <h3>Stack</h3>
-    <ul>
-      <li>Rust</li>
-      <li>Nix</li>
-      <li>Valence programs</li>
-      <li>Valence ZK coprocessor apps</li>
-      <li>Typescript + NextJS</li>
-      <li>Custom end-to-end test suite</li>
-    </ul>
-  </div>
-</div>
-
-<br/>[Apply to Timewave](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
+<br/>[Apply to Timewave →](https://protective-bearberry-a26.notion.site/Timewave-Open-Positions-3231bdf2f49741829de6ccfd851fe951)
