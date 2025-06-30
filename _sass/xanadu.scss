@@ -58,6 +58,21 @@ $xanadu-font: 'Times New Roman', Times, serif;
 $xanadu-font-size: 12px;
 $xanadu-line-height: 1.4;
 
+// Clock hand mixin for DRY code
+@mixin clock-hands($width: 1.5px) {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  background-color: $xanadu-control;
+  border-radius: 0;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  width: $width;
+  margin-left: -($width / 2);
+}
+
 // Responsive breakpoints
 $mobile: 768px;
 $tablet: 1024px;
@@ -106,35 +121,21 @@ $tablet: 1024px;
 }
 
 .hour-hand, .minute-hand, .second-hand {
-  position: absolute;
-  left: 50%;
-  bottom: 50%;
-  transform-origin: bottom center;
-  background-color: $xanadu-control;
-  border-radius: 0;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
+  @include clock-hands(1.5px);
 }
 
 .hour-hand {
-  width: 1.5px;
   height: 25%;
-  margin-left: -0.75px;
   background-color: darken($highlight-green, 30%);
 }
 
 .minute-hand {
-  width: 1.5px;
   height: 35%;
-  margin-left: -0.75px;
   background-color: darken($highlight-cyan, 30%);
 }
 
 .second-hand {
-  width: 1.5px;
   height: 40%;
-  margin-left: -0.75px;
   background-color: darken($highlight-pink, 30%);
 }
 
@@ -468,8 +469,8 @@ $tablet: 1024px;
   }
 }
 
-// Styles for product items, capability items, and blog items
-.product-item, .capability-item, .blog-item {
+// Styles for all item types - consolidated for DRY code
+.product-item, .capability-item, .blog-item, .stack-item {
   margin-bottom: 12px;
   padding: 8px;
   background-color: rgba(255, 255, 255, 0.4);
@@ -479,27 +480,6 @@ $tablet: 1024px;
   position: relative;
   
   // Default hover state
-  &:hover, &.highlighted {
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  strong {
-    color: $xanadu-text;
-    font-weight: bold;
-  }
-}
-
-// Stack item specific styling - same as other items
-.stack-item {
-  margin-bottom: 12px;
-  padding: 8px;
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 0;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  position: relative;
-  
-  // Default hover state - same as product items
   &:hover, &.highlighted {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   }
@@ -815,35 +795,21 @@ hr {
   }
   
   .mini-hour-hand, .mini-minute-hand, .mini-second-hand {
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform-origin: bottom center;
-    background-color: $xanadu-control;
-    border-radius: 0;
-    image-rendering: pixelated;
-    image-rendering: -moz-crisp-edges;
-    image-rendering: crisp-edges;
+    @include clock-hands(1px);
   }
   
   .mini-hour-hand {
-    width: 1px;
     height: 25%;
-    margin-left: -0.5px;
     background-color: darken($highlight-green, 30%);
   }
   
   .mini-minute-hand {
-    width: 1px;
     height: 35%;
-    margin-left: -0.5px;
     background-color: darken($highlight-cyan, 30%);
   }
   
   .mini-second-hand {
-    width: 1px;
     height: 40%;
-    margin-left: -0.5px;
     background-color: darken($highlight-pink, 30%);
   }
   
