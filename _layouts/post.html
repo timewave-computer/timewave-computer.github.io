@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {%- include head.html -%}
 
@@ -52,46 +52,7 @@
     </main>
   </div>
 
-  <script>
-    // Analog Clock Functionality
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours() % 12;
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-      
-      // Calculate angles (360 degrees = full circle)
-      const hourAngle = (hours * 30) + (minutes * 0.5); // 30 degrees per hour + minute adjustment
-      const minuteAngle = minutes * 6; // 6 degrees per minute
-      const secondAngle = seconds * 6; // 6 degrees per second
-      
-      // Apply rotations to main clock (if it exists)
-      const hourHand = document.querySelector('.hour-hand');
-      const minuteHand = document.querySelector('.minute-hand');
-      const secondHand = document.querySelector('.second-hand');
-      
-      if (hourHand && minuteHand && secondHand) {
-        hourHand.style.transform = `rotate(${hourAngle}deg)`;
-        minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
-        secondHand.style.transform = `rotate(${secondAngle}deg)`;
-      }
-      
-      // Apply rotations to mini clock
-      const miniHourHand = document.querySelector('.mini-hour-hand');
-      const miniMinuteHand = document.querySelector('.mini-minute-hand');
-      const miniSecondHand = document.querySelector('.mini-second-hand');
-      
-      if (miniHourHand && miniMinuteHand && miniSecondHand) {
-        miniHourHand.style.transform = `rotate(${hourAngle}deg)`;
-        miniMinuteHand.style.transform = `rotate(${minuteAngle}deg)`;
-        miniSecondHand.style.transform = `rotate(${secondAngle}deg)`;
-      }
-    }
-    
-    // Update clock immediately and then every second
-    updateClock();
-    setInterval(updateClock, 1000); // Update every second
-  </script>
+  <script src="{{ '/assets/js/clock.js' | relative_url }}"></script>
 
 </body>
 </html> 

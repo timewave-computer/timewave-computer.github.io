@@ -177,13 +177,20 @@
       const allPanes = document.querySelectorAll('.xanadu-pane');
       let maxZIndex = 100;
       
-      // Create connection line element
-      function createConnectionLine(clusterName, index) {
-        const line = document.createElement('div');
-        line.className = 'connection-line';
-        line.setAttribute('data-connection', clusterName);
-        line.setAttribute('data-line-index', index);
-        container.appendChild(line);
+      // Create or reuse connection line element
+      function getOrCreateConnectionLine(clusterName, index) {
+        // First try to find an existing line
+        let line = container.querySelector(`.connection-line[data-connection="${clusterName}"][data-line-index="${index}"]`);
+        
+        if (!line) {
+          // Create new line only if one doesn't exist
+          line = document.createElement('div');
+          line.className = 'connection-line';
+          line.setAttribute('data-connection', clusterName);
+          line.setAttribute('data-line-index', index);
+          container.appendChild(line);
+        }
+        
         return line;
       }
       
@@ -194,10 +201,7 @@
           return null;
         }
         
-        let line = container.querySelector(`.connection-line[data-connection="${clusterName}"][data-line-index="${index}"]`);
-        if (!line) {
-          line = createConnectionLine(clusterName, index);
-        }
+        const line = getOrCreateConnectionLine(clusterName, index);
         
         const containerRect = container.getBoundingClientRect();
         const rect1 = element1.getBoundingClientRect();
@@ -215,7 +219,7 @@
           if (!parentPane) return true;
           
           const paneRect = parentPane.getBoundingClientRect();
-          const paneContent = parentPane.querySelector('.window-content');
+          const paneContent = parentPane.querySelector('.pane-content');
           if (!paneContent) return true;
           
           const contentRect = paneContent.getBoundingClientRect();
@@ -318,6 +322,30 @@
           line.classList.remove('active');
         });
       }
+
+      // Clean up unused connection lines periodically
+      function cleanupUnusedLines() {
+        const allLines = container.querySelectorAll('.connection-line');
+        const activeLines = container.querySelectorAll('.connection-line.active');
+        
+        // If we have more than 50 inactive lines, remove some of them
+        const inactiveLines = Array.from(allLines).filter(line => !line.classList.contains('active'));
+        if (inactiveLines.length > 50) {
+          // Remove oldest inactive lines (first 25)
+          inactiveLines.slice(0, 25).forEach(line => {
+            line.remove();
+          });
+        }
+      }
+
+      // Debounced cleanup function
+      let cleanupTimeout = null;
+      function scheduleCleanup() {
+        if (cleanupTimeout) {
+          clearTimeout(cleanupTimeout);
+        }
+        cleanupTimeout = setTimeout(cleanupUnusedLines, 2000); // Clean up after 2 seconds of inactivity
+      }
       
       // Get all highlighted text elements in the same cluster
       function getClusterElements(clusterName) {
@@ -377,6 +405,9 @@
             
             // Hide connection lines
             hideConnectionLines(clusterName);
+            
+            // Schedule cleanup of unused lines
+            scheduleCleanup();
           }
         });
       });
@@ -412,35 +443,10 @@
       });
     });
     
-    // Analog Clock Functionality
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours() % 12;
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-      
-      // Calculate angles (360 degrees = full circle)
-      const hourAngle = (hours * 30) + (minutes * 0.5); // 30 degrees per hour + minute adjustment
-      const minuteAngle = minutes * 6; // 6 degrees per minute
-      const secondAngle = seconds * 6; // 6 degrees per second
-      
-      // Apply rotations
-      const hourHand = document.querySelector('.hour-hand');
-      const minuteHand = document.querySelector('.minute-hand');
-      const secondHand = document.querySelector('.second-hand');
-      
-      if (hourHand && minuteHand && secondHand) {
-        hourHand.style.transform = `rotate(${hourAngle}deg)`;
-        minuteHand.style.transform = `rotate(${minuteAngle}deg)`;
-        secondHand.style.transform = `rotate(${secondAngle}deg)`;
-      }
-    }
-    
-    // Update clock immediately and then every second
-    updateClock();
-    setInterval(updateClock, 1000); // Update every second
+
   </script>
   
+  <script src="{{ '/assets/js/clock.js' | relative_url }}"></script>
   <script src="{{ '/assets/js/xanadu-drag.js' | relative_url }}"></script>
 </body>
 
