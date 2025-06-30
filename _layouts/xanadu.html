@@ -235,42 +235,99 @@
         const element2Visible = isElementFullyVisible(element2);
         const shouldBeDashed = !element1Visible || !element2Visible;
         
-        // Calculate closest points between the two rectangles
-        function getClosestPoints(rect1, rect2) {
-          // Get the centers first
-          const center1X = rect1.left + rect1.width / 2;
-          const center1Y = rect1.top + rect1.height / 2;
-          const center2X = rect2.left + rect2.width / 2;
-          const center2Y = rect2.top + rect2.height / 2;
+        // Get the actual start position of highlighted text (handles multi-line text)
+        function getHighlightStartPosition(element) {
+          try {
+            // Use Range API to get the precise start position of the text content
+            const range = document.createRange();
+            
+            // If element has text nodes, select the first text node
+            const textNode = element.firstChild;
+            if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+              range.setStart(textNode, 0);
+              range.setEnd(textNode, 0);
+            } else {
+              // Fallback to selecting element contents and collapsing to start
+              range.selectNodeContents(element);
+              range.collapse(true);
+            }
+            
+            const startRect = range.getBoundingClientRect();
+            
+            // Validate that we got a valid rectangle
+            if (startRect.width === 0 && startRect.height === 0) {
+              // Fallback to element's bounding rect
+              const elementRect = element.getBoundingClientRect();
+              return {
+                x: elementRect.left,
+                y: elementRect.top
+              };
+            }
+            
+            return {
+              x: startRect.left,
+              y: startRect.top
+            };
+          } catch (e) {
+            console.warn('Error getting highlight start position:', e);
+            // Fallback to element's bounding rect
+            const elementRect = element.getBoundingClientRect();
+            return {
+              x: elementRect.left,
+              y: elementRect.top
+            };
+          }
+        }
+        
+        // Get appropriate connection points based on element positions
+        function getConnectionPoints(rect1, rect2, element1, element2) {
+          // Determine which element is leftmost by comparing left edges
+          const element1IsLeftmost = rect1.left <= rect2.left;
           
-          // Calculate the closest point on rect1's edge to rect2's center
-          let closest1X = Math.max(rect1.left, Math.min(center2X, rect1.right));
-          let closest1Y = Math.max(rect1.top, Math.min(center2Y, rect1.bottom));
+          let point1X, point1Y, point2X, point2Y;
           
-          // Calculate the closest point on rect2's edge to rect1's center
-          let closest2X = Math.max(rect2.left, Math.min(center1X, rect2.right));
-          let closest2Y = Math.max(rect2.top, Math.min(center1Y, rect2.bottom));
+          if (element1IsLeftmost) {
+            // Element 1 is leftmost - connect from upper right
+            point1X = rect1.right;
+            point1Y = rect1.top;
+            
+            // Element 2 is rightmost - connect from actual start of highlight
+            const startPos = getHighlightStartPosition(element2);
+            point2X = startPos.x;
+            point2Y = startPos.y;
+          } else {
+            // Element 1 is rightmost - connect from actual start of highlight
+            const startPos = getHighlightStartPosition(element1);
+            point1X = startPos.x;
+            point1Y = startPos.y;
+            
+            // Element 2 is leftmost - connect from upper right
+            point2X = rect2.right;
+            point2Y = rect2.top;
+          }
           
           return {
-            point1: { x: closest1X, y: closest1Y },
-            point2: { x: closest2X, y: closest2Y }
+            point1: { x: point1X, y: point1Y },
+            point2: { x: point2X, y: point2Y }
           };
         }
         
-        const closestPoints = getClosestPoints(rect1, rect2);
+        const connectionPoints = getConnectionPoints(rect1, rect2, element1, element2);
         
         // Convert to container-relative coordinates
-        const startX = closestPoints.point1.x - containerRect.left;
-        const startY = closestPoints.point1.y - containerRect.top;
-        const endX = closestPoints.point2.x - containerRect.left;
-        const endY = closestPoints.point2.y - containerRect.top;
+        const startX = connectionPoints.point1.x - containerRect.left;
+        const startY = connectionPoints.point1.y - containerRect.top;
+        const endX = connectionPoints.point2.x - containerRect.left;
+        const endY = connectionPoints.point2.y - containerRect.top;
         
         // Validate that connection points are within reasonable bounds
         const containerWidth = containerRect.width;
         const containerHeight = containerRect.height;
         
-        if (startX < 0 || startX > containerWidth || startY < 0 || startY > containerHeight ||
-            endX < 0 || endX > containerWidth || endY < 0 || endY > containerHeight) {
+        // Allow some margin outside the container for connection lines
+        const margin = 50;
+        if (startX < -margin || startX > containerWidth + margin || startY < -margin || startY > containerHeight + margin ||
+            endX < -margin || endX > containerWidth + margin || endY < -margin || endY > containerHeight + margin) {
           return null;
         }
         
@@ -293,6 +350,8 @@
         line.style.height = '1px';
         line.style.transform = `rotate(${angle}deg)`;
         line.style.transformOrigin = '0 50%';
+        line.style.position = 'absolute';
+        line.style.zIndex = '9999';
         
         // Apply dashed style if either element is out of view
         if (shouldBeDashed) {
