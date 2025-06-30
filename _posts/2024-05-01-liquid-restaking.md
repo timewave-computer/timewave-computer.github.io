@@ -3,11 +3,8 @@ permalink: liquid-restaking-token
 layout: post
 title: "Building a liquid restaking token from first principles"
 date: 2024-05-07 11:10:00 -0700
-
----
-
-*By Sam Hart and Max Einhorn — thank you to Myles O’Neil, Krane, and Michael Ippolito for their thoughtful review*
-
+authors: "Sam Hart and Max Einhorn"
+acknowledgments: "Thank you to Myles O'Neil, Krane, and Michael Ippolito for their thoughtful review."
 ---
 
 Liquid restaking tokens (LRTs) are intermediary protocols built on top of slashing and execution primitives provided by restaking protocols, such as EigenLayer. The LRT protocol takes deposits from users and delegates those deposits to operators who in turn allocate this slashable collateral to a set of AVSs. The job of an LRT is to find promising AVSs and negotiate security agreements with them in exchange for a fixed portion of supply and ongoing rewards (e.g., airdrops, AVS token inflation, transaction fees, MEV, protocol fees). LRTs then pass these rewards back to depositors while pocketing a service fee. The designs of these LRTs vary in AVS contract structure, depositor incentives, and internalization of risk within the LRT asset construction. However, in speaking with many LRTs, we have found that most of their designs will make it impossible for them to uphold their commitments to their counterparties and will put the LRT’s solvency at risk. Moreover, in these conversations, we have identified gaps in the existing market structure for managing duration, efficiently utilizing capital, providing initial liquidity, and onboarding users, all of which will need to be addressed before the restaking market finds equilibrium. In this post, we articulate design decisions that LRTs can make to close these gaps.
@@ -32,7 +29,7 @@ As AVSs launch tokens, they will need initial liquidity and price support, parti
 
 While some AVSs provide backend services to other protocols, many others will require building a retail customer base. Purchasing restaked security is often a means to indirectly access users who have made LRT deposits, where airdrops act as a user acquisition channel. In fact, it is unclear to what extent AVSs are paying for security vs. such auxiliary benefits valuable to their go-to-market. Executed poorly, these airdrops are costly, imprecise, and depress the AVS token price.
 
-As we have seen with the Cosmos Hub’s Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payment structures, competitive dynamics among secured applications, efficient liquidation, and slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
+As we have seen with the Cosmos Hub's Interchain Security offering, there are many other challenges that LRTs and restaking protocols will need to contend with, including upgrade coordination, operator incentive alignment, out-of-band payment structures, competitive dynamics among secured applications, efficient liquidation, and slashing claims adjudication. However, this post will focus exclusively on addressing the four concerns above.
 
 # The LRT solution space
 
@@ -48,7 +45,7 @@ LRT protocols can reuse the capital backing their security guarantee as collater
 
 *3. Providing a facility for AVS liquidity*
 
-A key objective for AVSs is sourcing liquidity for the AVS’s native token. Rather than relying on a vague notion of alignment, LRTs can make their own treasury assets—or the synthetic assets they create—available to bootstrap liquidity for the AVS’s native token. The cost of liquidity provisioning could be expressed as an additional fee or amortized into the cost of AVS security provision. Taking this further, the LRT could also deploy the liquidity to strategically relevant destinations within the AVS’s DeFi economy, such as contributing to the supply side of a lending protocol to reduce interest rates and stimulate borrowing.
+A key objective for AVSs is sourcing liquidity for the AVS's native token. Rather than relying on a vague notion of alignment, LRTs can make their own treasury assets—or the synthetic assets they create—available to bootstrap liquidity for the AVS's native token. The cost of liquidity provisioning could be expressed as an additional fee or amortized into the cost of AVS security provision. Taking this further, the LRT could also deploy the liquidity to strategically relevant destinations within the AVS's DeFi economy, such as contributing to the supply side of a lending protocol to reduce interest rates and stimulate borrowing.
 
 *4. Using token incentives to ensure user conversion*
 
@@ -69,7 +66,7 @@ Restaking protocols may require payment in the same denomination as that of the 
 
 *2. Splitting principal from rewards (similar to Pendle)*
 
-The LRT requires depositors to buy bonds with a duration to ensure that the capital is available to commit to AVSs for that duration. The LRT could split the bond into principal and interest tokens. Doing so would still accomplish the LRT’s goal of guaranteeing capital for a minimum duration while also providing depositors with rewards in the meantime.
+The LRT requires depositors to buy bonds with a duration to ensure that the capital is available to commit to AVSs for that duration. The LRT could split the bond into principal and interest tokens. Doing so would still accomplish the LRT's goal of guaranteeing capital for a minimum duration while also providing depositors with rewards in the meantime.
 
 *3. Variable security level*
 
@@ -99,11 +96,11 @@ Our proposed LRT design space aims to give everyone more of what they want. AVSs
 
 *Shared liquidity*
 
-In Timewave’s restaking work to date, we have already seen liquidity sharing agreements becoming a key lever for creating attractive security arrangements. Timewave’s Covenant system enables protocols to lend liquidity to other protocols trustlessly and programmatically. If you’d like to explore liquidity options for your LRT, we would love to talk about how we can collaborate.
+In Timewave's restaking work to date, we have already seen liquidity sharing agreements becoming a key lever for creating attractive security arrangements. Timewave's Covenant system enables protocols to lend liquidity to other protocols trustlessly and programmatically. If you'd like to explore liquidity options for your LRT, we would love to talk about how we can collaborate.
 
 *Balance sheet management*
 
-Timewave’s Rebalancer enables cross-chain balance sheet management. If you are an AVS seeking to pay an LRT in a token different from your native token or if you are an LRT that is interested in converting native AVS tokens into a different token, we would be happy to work with you to ensure your balance sheet needs are met.
+Timewave's Rebalancer enables cross-chain balance sheet management. If you are an AVS seeking to pay an LRT in a token different from your native token or if you are an LRT that is interested in converting native AVS tokens into a different token, we would be happy to work with you to ensure your balance sheet needs are met.
 
 *Come talk to us*
 
@@ -113,7 +110,7 @@ Timewave team has experience designing and implementing the primary Cosmos liqui
 
 # Appendix: a prototype LRT construction
 
-To understand the implications of the various architectural decisions made by the LRT designer, let’s build a LRT from the ground up in a way that addresses the four core problems. To set up the problem, we start with the following provisions:
+To understand the implications of the various architectural decisions made by the LRT designer, let's build a LRT from the ground up in a way that addresses the four core problems. To set up the problem, we start with the following provisions:
 
 | AVS Provision    | Amount |
 | -------- | ------- |
@@ -130,18 +127,18 @@ The design begins with an LRT protocol and an AVS that are interested in working
 
 Specifically, the AVS wants $100mm worth of security and $85mm worth of ETH liquidity for one year. The LRT satisfies these needs by selling $120mm worth of 1-year duration bonds to depositors—bond holders receive the profits made via security and liquidity lending. The LRT sells more than $100mm worth of bonds as a buffer to ensure that it will be able to continue meeting its $100mm security obligation to the AVS even if the price of ETH falls in dollar terms. The LRT does not have to worry about early depositor withdrawal because the depositors are locked for one year. The AVS pays the LRT 2% on the $USD amount of committed security annually for the security it is borrowing.
 
-The LRT then creates $85mm worth of synthetic ETH using the $120mm of deposited ETH as collateral and uses the $85mm worth of synthetic ETH to bootstrap liquidity for the AVS’s native token. The difference between the amount of synthetic ETH that the LRT creates and the amount of raw ETH it has in collateral is the buffer that ensures that the peg between the synthetic ETH and real ETH remains stable. The AVS pays the 3% annual interest to the LRT for the liquidity that the LRT is using to bootstrap liquidity for the AVS’s native token.
+The LRT then creates $85mm worth of synthetic ETH using the $120mm of deposited ETH as collateral and uses the $85mm worth of synthetic ETH to bootstrap liquidity for the AVS's native token. The difference between the amount of synthetic ETH that the LRT creates and the amount of raw ETH it has in collateral is the buffer that ensures that the peg between the synthetic ETH and real ETH remains stable. The AVS pays the 3% annual interest to the LRT for the liquidity that the LRT is using to bootstrap liquidity for the AVS's native token.
 
-To incentivize user adoption, the AVS also offers depositors a multiplier on the points depositors receive by engaging in desirable activity on the AVS (e.g., participating in DeFi). This multiplier results in sending depositors an additional 1% of the depositors’ capital back to the depositors in the form of points that will ultimately convert to token claims.
+To incentivize user adoption, the AVS also offers depositors a multiplier on the points depositors receive by engaging in desirable activity on the AVS (e.g., participating in DeFi). This multiplier results in sending depositors an additional 1% of the depositors' capital back to the depositors in the form of points that will ultimately convert to token claims.
 
-The LRT passes all revenue generated via the 3% liquidity interest, 2% security fee, and 1% points bonus to the bond holders minus the restaking protocol’s security fee of 0.25% and the LRT’s fee of 0.5%. The LRT also retains any profits it makes in the process of liquidity bootstrapping (e.g. interest on loans, fees on LP positions).
+The LRT passes all revenue generated via the 3% liquidity interest, 2% security fee, and 1% points bonus to the bond holders minus the restaking protocol's security fee of 0.25% and the LRT's fee of 0.5%. The LRT also retains any profits it makes in the process of liquidity bootstrapping (e.g. interest on loans, fees on LP positions).
 
 To summarize, the AVS-LRT deal mechanics consist of the following:
 
 - LRT sells $120mm ($100mm * 120%) worth of 1-year duration bonds to depositors.
-- AVS pays LRT $2.55mm ($85mm * 3%) worth of tokens in interest over one year for the LRT’s bootstrapping of the AVS’s native token.
+- AVS pays LRT $2.55mm ($85mm * 3%) worth of tokens in interest over one year for the LRT's bootstrapping of the AVS's native token.
 - AVS pays $2mm ($100mm * 2%) worth of tokens to the LRT for security over one year.
 - AVS pays $1.2mm ($120mm * 1%) worth of points to the LRT depositors over one year.
-- The LRT pays the restaking protocol $300k ($120mm * 0.25%) for the use of the restaking protocol’s technology to provide security to the AVS over one year.
+- The LRT pays the restaking protocol $300k ($120mm * 0.25%) for the use of the restaking protocol's technology to provide security to the AVS over one year.
 - The LRT retains $600k in revenue ($120mm * 0.5%) over one year for engaging in all the activity necessary to generate the rewards that are high enough to attract $120mm worth of deposits.
 - Depositors receive total profit of $4.85mm over one year ($2.55mm + $2mm + $1.2mm - $300k - $600k), which is means a 4.04% rewards rate ($4.85mm / $120mm).

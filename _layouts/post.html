@@ -35,10 +35,19 @@
           <p class="post-meta">
             {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
             {{ page.date | date: date_format }}
+            {%- if page.authors -%}
+              &nbsp;&nbsp;•&nbsp;&nbsp;{{ page.authors }}
+            {%- endif -%}
             {%- if page.author -%}
-              • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+              &nbsp;&nbsp;•&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
             {%- endif -%}
           </p>
+          
+          {%- if page.acknowledgments -%}
+          <div class="post-metadata">
+            <p class="post-acknowledgments"><em>{{ page.acknowledgments }}</em></p>
+          </div>
+          {%- endif -%}
         </header>
 
         <div class="post-content">
