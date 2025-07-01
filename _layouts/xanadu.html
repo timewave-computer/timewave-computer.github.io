@@ -355,17 +355,24 @@
         
         // Apply dashed style if either element is out of view
         if (shouldBeDashed) {
-          // Get the background color before we clear it
-          const computedStyle = window.getComputedStyle(line);
-          const backgroundColor = computedStyle.backgroundColor;
+          // Cache the original background color if not already cached
+          if (!line.dataset.originalBackground) {
+            const computedStyle = window.getComputedStyle(line);
+            line.dataset.originalBackground = computedStyle.backgroundColor;
+          }
           
           // Apply dashed border with the same color as the original background
-          line.style.borderTop = `1px dashed ${backgroundColor}`;
+          line.style.borderTop = `1px dashed ${line.dataset.originalBackground}`;
           line.style.background = 'none';
           line.style.height = '0px';
         } else {
           line.style.borderTop = 'none';
-          line.style.background = '';
+          // Restore the cached background color instead of setting to empty string
+          if (line.dataset.originalBackground) {
+            line.style.background = line.dataset.originalBackground;
+          } else {
+            line.style.background = '';
+          }
           line.style.height = '1px';
         }
         
