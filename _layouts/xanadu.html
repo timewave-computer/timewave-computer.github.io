@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+{%- include head.html -%}
+
+<body class="xanadu-body">
+  <!-- Analog Clock Background -->
+  <div class="analog-clock">
+    <div class="clock-face">
+      <div class="hour-hand"></div>
+      <div class="minute-hand"></div>
+      <div class="second-hand"></div>
+    </div>
+  </div>
+  
+  <div class="xanadu-container">
+    <!-- Main Content Pane -->
+    <div class="xanadu-pane main-pane">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="window-control"></span>
+        </div>
+        <div class="window-title">About Timewave</div>
+      </div>
+      <div class="pane-content">
+        {{ content }}
+      </div>
+    </div>
+
+    <!-- Product Areas Pane -->
+    <div class="xanadu-pane product-pane">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="window-control"></span>
+        </div>
+        <div class="window-title">Product Areas</div>
+      </div>
+      <div class="pane-content">
+        <div class="product-section">
+          <div class="product-item" data-cluster="defi-infrastructure" data-term="cross-chain-vaults">
+            <strong>Cross-chain vaults and yield strategies</strong> - <span class="highlight-term" data-cluster="defi-infrastructure" data-term="cross-chain-vaults">Automated yield optimization across multiple blockchain networks</span>
+          </div>
+          
+          <div class="product-item" data-cluster="treasury-management" data-term="autonomous-treasury">
+            <strong>Autonomous treasury and liquidity management</strong> - <span class="highlight-term" data-cluster="treasury-management" data-term="autonomous-treasury">Self-managing financial systems for protocols</span>
+          </div>
+          
+          <div class="product-item" data-cluster="governance-systems" data-term="multi-chain-governance">
+            <strong>Multi-chain governance and monetary policy</strong> - <span class="highlight-term" data-cluster="governance-systems" data-term="multi-chain-governance">Coordinated decision-making across networks</span>
+          </div>
+          
+          <div class="product-item" data-cluster="market-infrastructure" data-term="multi-domain-markets">
+            <strong>Multi-domain market infrastructure</strong> - <span class="highlight-term" data-cluster="market-infrastructure" data-term="multi-domain-markets">Trading and liquidity systems spanning blockchains</span>
+          </div>
+          
+          <div class="product-item" data-cluster="token-systems" data-term="cross-chain-launches">
+            <strong>Cross-chain token launches</strong> - <span class="highlight-term" data-cluster="token-systems" data-term="cross-chain-launches">Native multi-network token distribution</span>
+          </div>
+          
+          <div class="product-item" data-cluster="user-experience" data-term="chain-abstraction">
+            <strong>Chain abstraction</strong> - <span class="highlight-term" data-cluster="user-experience" data-term="chain-abstraction">Seamless user experience across all networks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capabilities Pane -->
+    <div class="xanadu-pane capabilities-pane">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="window-control"></span>
+        </div>
+        <div class="window-title">Technical Capabilities</div>
+      </div>
+      <div class="pane-content">
+        <div class="capabilities-section">
+          <div class="capability-item" data-cluster="architecture-design" data-term="multi-chain-architecture">
+            <strong>Multi-chain protocol architecture</strong> - <span class="highlight-term" data-cluster="architecture-design" data-term="multi-chain-architecture">Designing systems that work across networks</span>
+          </div>
+          
+          <div class="capability-item" data-cluster="systems-engineering" data-term="fault-tolerant-systems">
+            <strong>Asynchronous and fault tolerant systems</strong> - <span class="highlight-term" data-cluster="systems-engineering" data-term="fault-tolerant-systems">Robust distributed system design</span>
+          </div>
+          
+          <div class="capability-item" data-cluster="contract-development" data-term="multi-vm-contracts">
+            <strong>Multi-VM contract engineering</strong> - <span class="highlight-term" data-cluster="contract-development" data-term="multi-vm-contracts">Smart contracts across different virtual machines</span>
+          </div>
+          
+          <div class="capability-item" data-cluster="cryptography" data-term="zk-circuits">
+            <strong>Custom ZK circuit development</strong> - <span class="highlight-term" data-cluster="cryptography" data-term="zk-circuits">Zero-knowledge proof implementations</span>
+          </div>
+          
+          <div class="capability-item" data-cluster="integration-expertise" data-term="protocol-integrations">
+            <strong>Deep protocol and bridge integrations</strong> - <span class="highlight-term" data-cluster="integration-expertise" data-term="protocol-integrations">Connecting diverse blockchain ecosystems</span>
+          </div>
+          
+          <div class="capability-item" data-cluster="economic-design" data-term="mechanism-design">
+            <strong>Market and mechanism design</strong> - <span class="highlight-term" data-cluster="economic-design" data-term="mechanism-design">Economic incentive structures</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technology Stack Pane -->
+    <div class="xanadu-pane stack-pane">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="window-control"></span>
+        </div>
+        <div class="window-title">Technology Stack</div>
+      </div>
+      <div class="pane-content">
+        <div class="stack-section">
+          <div class="stack-item" data-cluster="core-languages" data-term="rust-development">
+            <strong>Rust</strong> - Systems programming for blockchain infrastructure enabling <span class="highlight-term" data-cluster="systems-engineering" data-term="fault-tolerant-systems">fault-tolerant systems</span>
+          </div>
+          
+          <div class="stack-item" data-cluster="dev-environment" data-term="nix-tooling">
+            <strong>Nix</strong> - Reproducible development environments supporting <span class="highlight-term" data-cluster="testing-infrastructure" data-term="custom-testing">comprehensive testing workflows</span>
+          </div>
+          
+          <div class="stack-item" data-cluster="protocol-framework" data-term="valence-programs">
+            <strong>Valence programs</strong> - Cross-chain application framework for <span class="highlight-term" data-cluster="token-systems" data-term="cross-chain-launches">multi-network token launches</span>
+          </div>
+          
+          <div class="stack-item" data-cluster="cryptography" data-term="valence-zk">
+            <strong>Valence ZK coprocessor apps</strong> - Zero-knowledge computation platform implementing <span class="highlight-term" data-cluster="cryptography" data-term="zk-circuits">custom ZK circuits</span>
+          </div>
+          
+          <div class="stack-item" data-cluster="frontend-tech" data-term="typescript-nextjs">
+            <strong>TypeScript + NextJS</strong> - Modern web application development delivering <span class="highlight-term" data-cluster="user-experience" data-term="chain-abstraction">seamless user experiences</span>
+          </div>
+          
+          <div class="stack-item" data-cluster="testing-infrastructure" data-term="custom-testing">
+            <strong>Custom end-to-end test suite</strong> - Comprehensive multi-chain testing for <span class="highlight-term" data-cluster="contract-development" data-term="multi-vm-contracts">multi-VM contract validation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blog Posts Pane -->
+    <div class="xanadu-pane blog-pane">
+      <div class="window-header">
+        <div class="window-controls">
+          <span class="window-control"></span>
+        </div>
+        <div class="window-title">Blog</div>
+      </div>
+      <div class="pane-content">
+        <div class="blog-section">
+          {%- if site.posts.size > 0 -%}
+            {%- for post in site.posts limit:5 -%}
+              {%- unless post.published == false -%}
+                <a href="{{ post.url | relative_url }}" class="blog-item-link">
+                  <div class="blog-item" data-cluster="systems-engineering">
+                    <strong>{{ post.title | escape }}</strong> - <span class="highlight-term" data-cluster="systems-engineering" data-term="technical-writing">Technical insights on blockchain infrastructure</span>
+                    <div class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</div>
+                  </div>
+                </a>
+              {%- endunless -%}
+            {%- endfor -%}
+          {%- else -%}
+            <div class="blog-item">
+              <strong>No posts available</strong> - Check back soon for updates on our latest work
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Interactive cross-linking functionality with cluster-based connections across all panes
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.querySelector('.xanadu-container');
+      const allInteractiveElements = document.querySelectorAll('.highlight-term');
+      const allPanes = document.querySelectorAll('.xanadu-pane');
+      let maxZIndex = 100;
+      
+      // Create or reuse connection line element
+      function getOrCreateConnectionLine(clusterName, index) {
+        // First try to find an existing line
+        let line = container.querySelector(`.connection-line[data-connection="${clusterName}"][data-line-index="${index}"]`);
+        
+        if (!line) {
+          // Create new line only if one doesn't exist
+          line = document.createElement('div');
+          line.className = 'connection-line';
+          line.setAttribute('data-connection', clusterName);
+          line.setAttribute('data-line-index', index);
+          container.appendChild(line);
+        }
+        
+        return line;
+      }
+      
+      // Calculate and draw connection line between two elements
+      function drawConnectionLine(element1, element2, clusterName, index) {
+        // Validate that both elements exist and are visible
+        if (!element1 || !element2 || !element1.offsetParent || !element2.offsetParent) {
+          return null;
+        }
+        
+        const line = getOrCreateConnectionLine(clusterName, index);
+        
+        const containerRect = container.getBoundingClientRect();
+        const rect1 = element1.getBoundingClientRect();
+        const rect2 = element2.getBoundingClientRect();
+        
+        // Validate that both elements have valid dimensions
+        if (rect1.width === 0 || rect1.height === 0 || rect2.width === 0 || rect2.height === 0) {
+          return null;
+        }
+        
+        // Check if elements are fully visible in their containers
+        function isElementFullyVisible(element) {
+          const elementRect = element.getBoundingClientRect();
+          const parentPane = element.closest('.xanadu-pane');
+          if (!parentPane) return true;
+          
+          const paneRect = parentPane.getBoundingClientRect();
+          const paneContent = parentPane.querySelector('.pane-content');
+          if (!paneContent) return true;
+          
+          const contentRect = paneContent.getBoundingClientRect();
+          
+          // Check if element is fully within the visible content area
+          return elementRect.top >= contentRect.top && 
+                 elementRect.bottom <= contentRect.bottom &&
+                 elementRect.left >= contentRect.left && 
+                 elementRect.right <= contentRect.right;
+        }
+        
+        const element1Visible = isElementFullyVisible(element1);
+        const element2Visible = isElementFullyVisible(element2);
+        const shouldBeDashed = !element1Visible || !element2Visible;
+        
+        // Get the actual start position of highlighted text (handles multi-line text)
+        function getHighlightStartPosition(element) {
+          try {
+            // Use Range API to get the precise start position of the text content
+            const range = document.createRange();
+            
+            // If element has text nodes, select the first text node
+            const textNode = element.firstChild;
+            if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+              range.setStart(textNode, 0);
+              range.setEnd(textNode, 0);
+            } else {
+              // Fallback to selecting element contents and collapsing to start
+              range.selectNodeContents(element);
+              range.collapse(true);
+            }
+            
+            const startRect = range.getBoundingClientRect();
+            
+            // Validate that we got a valid rectangle
+            if (startRect.width === 0 && startRect.height === 0) {
+              // Fallback to element's bounding rect
+              const elementRect = element.getBoundingClientRect();
+              return {
+                x: elementRect.left,
+                y: elementRect.top
+              };
+            }
+            
+            return {
+              x: startRect.left,
+              y: startRect.top
+            };
+          } catch (e) {
+            console.warn('Error getting highlight start position:', e);
+            // Fallback to element's bounding rect
+            const elementRect = element.getBoundingClientRect();
+            return {
+              x: elementRect.left,
+              y: elementRect.top
+            };
+          }
+        }
+        
+        // Get appropriate connection points based on element positions
+        function getConnectionPoints(rect1, rect2, element1, element2) {
+          // Determine which element is leftmost by comparing left edges
+          const element1IsLeftmost = rect1.left <= rect2.left;
+          
+          let point1X, point1Y, point2X, point2Y;
+          
+          if (element1IsLeftmost) {
+            // Element 1 is leftmost - connect from upper right
+            point1X = rect1.right;
+            point1Y = rect1.top;
+            
+            // Element 2 is rightmost - connect from actual start of highlight
+            const startPos = getHighlightStartPosition(element2);
+            point2X = startPos.x;
+            point2Y = startPos.y;
+          } else {
+            // Element 1 is rightmost - connect from actual start of highlight
+            const startPos = getHighlightStartPosition(element1);
+            point1X = startPos.x;
+            point1Y = startPos.y;
+            
+            // Element 2 is leftmost - connect from upper right
+            point2X = rect2.right;
+            point2Y = rect2.top;
+          }
+          
+          return {
+            point1: { x: point1X, y: point1Y },
+            point2: { x: point2X, y: point2Y }
+          };
+        }
+        
+        const connectionPoints = getConnectionPoints(rect1, rect2, element1, element2);
+        
+        // Convert to container-relative coordinates
+        const startX = connectionPoints.point1.x - containerRect.left;
+        const startY = connectionPoints.point1.y - containerRect.top;
+        const endX = connectionPoints.point2.x - containerRect.left;
+        const endY = connectionPoints.point2.y - containerRect.top;
+        
+        // Validate that connection points are within reasonable bounds
+        const containerWidth = containerRect.width;
+        const containerHeight = containerRect.height;
+        
+        // Allow some margin outside the container for connection lines
+        const margin = 50;
+        if (startX < -margin || startX > containerWidth + margin || startY < -margin || startY > containerHeight + margin ||
+            endX < -margin || endX > containerWidth + margin || endY < -margin || endY > containerHeight + margin) {
+          return null;
+        }
+        
+        // Calculate line angle and length
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
+        const length = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        
+        // Don't draw extremely short or long lines
+        if (length < 10 || length > Math.max(containerWidth, containerHeight)) {
+          return null;
+        }
+        
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        // Position and rotate the line
+        line.style.left = startX + 'px';
+        line.style.top = startY + 'px';
+        line.style.width = length + 'px';
+        line.style.height = '1px';
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.transformOrigin = '0 50%';
+        line.style.position = 'absolute';
+        line.style.zIndex = '9999';
+        
+        // Apply dashed style if either element is out of view
+        if (shouldBeDashed) {
+          // Cache the original background color if not already cached
+          if (!line.dataset.originalBackground) {
+            const computedStyle = window.getComputedStyle(line);
+            line.dataset.originalBackground = computedStyle.backgroundColor;
+          }
+          
+          // Apply dashed border with the same color as the original background
+          line.style.borderTop = `1px dashed ${line.dataset.originalBackground}`;
+          line.style.background = 'none';
+          line.style.height = '0px';
+        } else {
+          line.style.borderTop = 'none';
+          // Restore the cached background color instead of setting to empty string
+          if (line.dataset.originalBackground) {
+            line.style.background = line.dataset.originalBackground;
+          } else {
+            line.style.background = '';
+          }
+          line.style.height = '1px';
+        }
+        
+        line.classList.add('active');
+        
+        return line;
+      }
+      
+      // Hide all connection lines for a cluster
+      function hideConnectionLines(clusterName) {
+        const lines = container.querySelectorAll(`.connection-line[data-connection="${clusterName}"]`);
+        lines.forEach(line => {
+          line.classList.remove('active');
+        });
+      }
+
+      // Clean up unused connection lines periodically
+      function cleanupUnusedLines() {
+        const allLines = container.querySelectorAll('.connection-line');
+        const activeLines = container.querySelectorAll('.connection-line.active');
+        
+        // If we have more than 50 inactive lines, remove some of them
+        const inactiveLines = Array.from(allLines).filter(line => !line.classList.contains('active'));
+        if (inactiveLines.length > 50) {
+          // Remove oldest inactive lines (first 25)
+          inactiveLines.slice(0, 25).forEach(line => {
+            line.remove();
+          });
+        }
+      }
+
+      // Debounced cleanup function
+      let cleanupTimeout = null;
+      function scheduleCleanup() {
+        if (cleanupTimeout) {
+          clearTimeout(cleanupTimeout);
+        }
+        cleanupTimeout = setTimeout(cleanupUnusedLines, 2000); // Clean up after 2 seconds of inactivity
+      }
+      
+      // Get all highlighted text elements in the same cluster
+      function getClusterElements(clusterName) {
+        return document.querySelectorAll(`.highlight-term[data-cluster="${clusterName}"]`);
+      }
+      
+      // Draw connection lines for a cluster (one line per element maximum)
+      function drawClusterConnections(clusterName) {
+        const clusterElements = Array.from(getClusterElements(clusterName));
+        let lineIndex = 0;
+        const usedElements = new Set();
+        
+        // Draw one line per element, ensuring no element has multiple outgoing lines
+        for (let i = 0; i < clusterElements.length; i++) {
+          if (usedElements.has(clusterElements[i])) continue;
+          
+          // Find the next unused element to connect to
+          for (let j = i + 1; j < clusterElements.length; j++) {
+            if (!usedElements.has(clusterElements[j])) {
+              const line = drawConnectionLine(clusterElements[i], clusterElements[j], clusterName, lineIndex);
+              if (line) {
+                // Only mark elements as used if the line was successfully drawn
+                usedElements.add(clusterElements[i]);
+                usedElements.add(clusterElements[j]);
+                lineIndex++;
+              }
+              break;
+            }
+          }
+        }
+      }
+      
+      // Add hover effects for all interactive elements
+      allInteractiveElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+          const clusterName = this.getAttribute('data-cluster');
+          if (clusterName) {
+            // Highlight all elements in the same cluster
+            const clusterElements = getClusterElements(clusterName);
+            clusterElements.forEach(el => {
+              el.classList.add('highlighted');
+            });
+            
+            // Draw connection lines between all cluster elements
+            drawClusterConnections(clusterName);
+          }
+        });
+        
+        element.addEventListener('mouseleave', function() {
+          const clusterName = this.getAttribute('data-cluster');
+          if (clusterName) {
+            // Remove highlighting from all elements in the cluster
+            const clusterElements = getClusterElements(clusterName);
+            clusterElements.forEach(el => {
+              el.classList.remove('highlighted');
+            });
+            
+            // Hide connection lines
+            hideConnectionLines(clusterName);
+            
+            // Schedule cleanup of unused lines
+            scheduleCleanup();
+          }
+        });
+      });
+      
+      // Handle window resize to redraw connection lines
+      window.addEventListener('resize', function() {
+        const activeLines = container.querySelectorAll('.connection-line.active');
+        const activeClusters = new Set();
+        
+        activeLines.forEach(line => {
+          const clusterName = line.getAttribute('data-connection');
+          activeClusters.add(clusterName);
+        });
+        
+        // Clear all active lines
+        activeLines.forEach(line => {
+          line.classList.remove('active');
+        });
+        
+        // Redraw connections for active clusters
+        activeClusters.forEach(clusterName => {
+          drawClusterConnections(clusterName);
+        });
+      });
+      
+      // Pane click handler to bring to foreground
+      allPanes.forEach(pane => {
+        pane.addEventListener('click', function() {
+          // Bring clicked pane to foreground
+          maxZIndex += 1;
+          this.style.zIndex = maxZIndex;
+        });
+      });
+    });
+    
+
+  </script>
+  
+  <script src="{{ '/assets/js/clock.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/xanadu-drag.js' | relative_url }}"></script>
+</body>
+
+</html> 

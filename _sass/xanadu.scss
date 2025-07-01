@@ -1,0 +1,1096 @@
+// Xanadu-style interface CSS - Accurate recreation of the original interface
+// Based on careful analysis of the original Xanadu GUI
+
+// Color palette - cooler grey tones
+$xanadu-bg: #e0e0e8;           // Cool grey background
+$xanadu-pane-bg: #eaeaf0;     // Slightly lighter cool grey pane background  
+$xanadu-border: #999999;      // Gray border
+$xanadu-header-bg: #d0d0d8;   // Cool grey header background
+$xanadu-text: #000000;        // Pure black text
+$xanadu-shadow: #cccccc;      // Light gray shadow
+$xanadu-control: #888888;     // Window controls
+$xanadu-scrollbar: #dddddd;   // Scrollbar track
+$xanadu-scrollbar-thumb: #aaaaaa; // Scrollbar thumb
+
+// Multiple highlight colors like the original Xanadu
+$highlight-yellow: #ffff99;   // Bright yellow
+$highlight-green: #99ff99;    // Bright green  
+$highlight-blue: #99ccff;     // Light blue
+$highlight-pink: #ffccff;     // Light pink
+$highlight-orange: #ffcc99;   // Light orange
+$highlight-cyan: #ccffff;     // Light cyan
+
+// Cluster color mapping for DRY code
+$cluster-colors: (
+  "user-experience": darken($highlight-yellow, 30%),
+  "systems-engineering": darken($highlight-green, 30%),
+  "governance-systems": darken($highlight-blue, 30%),
+  "architecture-design": darken($highlight-pink, 30%),
+  "protocol-framework": darken($highlight-orange, 30%),
+  "market-infrastructure": darken($highlight-cyan, 30%),
+  "defi-infrastructure": darken($highlight-yellow, 30%),
+  "treasury-management": darken($highlight-green, 30%),
+  "core-languages": darken($highlight-blue, 30%),
+  "cryptography": darken($highlight-pink, 30%),
+  "contract-development": darken($highlight-orange, 30%),
+  "testing-infrastructure": darken($highlight-cyan, 30%),
+  "dev-environment": darken($highlight-yellow, 30%),
+  "frontend-tech": darken($highlight-green, 30%),
+  "integration-expertise": darken($highlight-blue, 30%),
+  "economic-design": darken($highlight-pink, 30%),
+  "token-systems": darken($highlight-orange, 30%)
+);
+
+// Definition term color mapping for DRY code
+$definition-colors: (
+  "cross-chain-applications": ($highlight-yellow, darken($highlight-yellow, 30%)),
+  "verifiable-distributed-systems": ($highlight-green, darken($highlight-green, 30%)),
+  "permissionless-digital-institutions": ($highlight-blue, darken($highlight-blue, 30%)),
+  "multi-domain-infrastructure": ($highlight-pink, darken($highlight-pink, 30%)),
+  "valence": ($highlight-orange, darken($highlight-orange, 30%)),
+  "interchain": ($highlight-cyan, darken($highlight-cyan, 30%)),
+  "protocol-to-protocol-lending": ($highlight-yellow, darken($highlight-yellow, 30%)),
+  "global-liquidity-interoperability": ($highlight-green, darken($highlight-green, 30%))
+);
+
+// Typography - serif font to match original
+$xanadu-font: 'Times New Roman', Times, serif;
+$xanadu-font-size: 12px;
+$xanadu-line-height: 1.4;
+
+// Clock hand mixin for DRY code
+@mixin clock-hands($width: 1.5px) {
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform-origin: bottom center;
+  background-color: $xanadu-control;
+  border-radius: 0;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  width: $width;
+  margin-left: -($width / 2);
+}
+
+// Responsive breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+
+// Base styles for Xanadu interface
+.xanadu-body {
+  background-color: $xanadu-bg;
+  font-family: $xanadu-font;
+  font-size: $xanadu-font-size;
+  line-height: $xanadu-line-height;
+  color: $xanadu-text;
+  margin: 0;
+  padding: 8px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  position: relative;
+}
+
+// Analog Clock - Background Layer
+.analog-clock {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 35vmin;
+  height: 35vmin;
+  z-index: 1;
+  pointer-events: none;
+  
+  @media (max-width: $mobile) {
+    width: 40vmin;
+    height: 40vmin;
+  }
+}
+
+.clock-face {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $xanadu-border;
+  border-radius: 50%;
+  position: relative;
+  background-color: darken($xanadu-bg, 5%);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.hour-hand, .minute-hand, .second-hand {
+  @include clock-hands(1.5px);
+}
+
+.hour-hand {
+  height: 25%;
+  background-color: darken($highlight-green, 30%);
+}
+
+.minute-hand {
+  height: 35%;
+  background-color: darken($highlight-cyan, 30%);
+}
+
+.second-hand {
+  height: 40%;
+  background-color: darken($highlight-pink, 30%);
+}
+
+// Main container - akimbo scattered layout
+.xanadu-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  
+  @media (max-width: $tablet) {
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  @media (max-width: $mobile) {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+// Individual panes - akimbo positioned
+.xanadu-pane {
+  position: absolute;
+  background-color: $xanadu-pane-bg;
+  border: 1px solid $xanadu-border;
+  border-radius: 0;
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+    2px 2px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  height: 400px;
+  transition: transform 0.3s ease, z-index 0.1s ease;
+  
+  &:hover {
+    z-index: 100;
+    transform: scale(1.02);
+  }
+  
+  // Dragging state
+  &.dragging {
+    box-shadow: 
+      inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+      4px 4px 16px rgba(0, 0, 0, 0.25);
+    transform: scale(1.02);
+    z-index: 1000 !important;
+  }
+  
+  // Main pane - center-left
+  &.main-pane {
+    top: 8%;
+    left: 8%;
+    width: 380px;
+    height: 550px;
+    z-index: 10;
+    
+    @media (max-width: $mobile) {
+      width: 100% !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 300px;
+      margin: 0 !important;
+      top: auto !important;
+      left: auto !important;
+    }
+  }
+  
+  // Product pane - top-right
+  &.product-pane {
+    top: 5%;
+    right: 8%;
+    width: 300px;
+    height: 380px;
+    z-index: 8;
+    
+    @media (max-width: $mobile) {
+      width: 100% !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 300px;
+      margin: 0 !important;
+      top: auto !important;
+      right: auto !important;
+    }
+  }
+  
+  // Capabilities pane - bottom-left
+  &.capabilities-pane {
+    bottom: 12%;
+    left: 12%;
+    width: 340px;
+    height: 360px;
+    z-index: 9;
+    
+    @media (max-width: $mobile) {
+      width: 100% !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 300px;
+      margin: 0 !important;
+      bottom: auto !important;
+      left: auto !important;
+    }
+  }
+  
+  // Stack pane - bottom-right
+  &.stack-pane {
+    bottom: 5%;
+    right: 5%;
+    width: 280px;
+    height: 320px;
+    z-index: 7;
+    
+    @media (max-width: $mobile) {
+      width: 100% !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 300px;
+      margin: 0 !important;
+      bottom: auto !important;
+      right: auto !important;
+    }
+  }
+  
+  // Blog pane - center-right
+  &.blog-pane {
+    top: 42%;
+    right: 12%;
+    width: 320px;
+    height: 350px;
+    z-index: 6;
+    
+    @media (max-width: $mobile) {
+      width: 100% !important;
+      position: static !important;
+      height: auto !important;
+      min-height: 300px;
+      margin: 0 !important;
+      top: auto !important;
+      right: auto !important;
+    }
+  }
+  
+  @media (max-width: $tablet) {
+    position: relative;
+    transform: none !important;
+    width: 45%;
+    height: 400px;
+    margin: 10px;
+    float: left;
+    
+    &:nth-child(odd) {
+      clear: left;
+    }
+    
+    &:hover {
+      transform: scale(1.01) !important;
+    }
+  }
+  
+  @media (max-width: $mobile) {
+    position: static;
+    transform: none !important;
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    margin: 0;
+    float: none;
+    
+    &:hover {
+      transform: none !important;
+    }
+  }
+}
+
+// Window headers - more subtle
+.window-header {
+  background-color: $xanadu-header-bg;
+  border-bottom: 1px solid $xanadu-border;
+  padding: 2px 8px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 11px;
+  color: $xanadu-text;
+  cursor: move;
+  user-select: none;
+  
+  &:hover {
+    background-color: darken($xanadu-header-bg, 5%);
+  }
+  
+  &:active {
+    background-color: darken($xanadu-header-bg, 10%);
+  }
+}
+
+// Window controls - single box in top left
+.window-controls {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.window-control {
+  width: 8px;
+  height: 8px;
+  border: 1px solid $xanadu-control;
+  background-color: $xanadu-pane-bg;
+}
+
+.window-title {
+  width: 100%;
+  text-align: center;
+  font-weight: normal;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+// Pane content - tighter spacing
+.pane-content {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  text-align: left;
+  
+  @media (max-width: $mobile) {
+    padding: 10px;
+  }
+}
+
+// Typography styles - more document-like
+.xanadu-body h1, 
+.xanadu-body h2, 
+.xanadu-body h3 {
+  font-family: $xanadu-font;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: $xanadu-text;
+}
+
+.xanadu-body h1 { 
+  font-size: 17px; 
+  margin-bottom: 12px;
+}
+.xanadu-body h2 { 
+  font-size: 15px; 
+  margin-bottom: 10px;
+}
+.xanadu-body h3 { 
+  font-size: 13px; 
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.xanadu-body p {
+  margin-bottom: 8px;
+  text-align: left;
+  text-indent: 0;
+}
+
+.xanadu-body ul, .xanadu-body ol {
+  margin-bottom: 8px;
+  padding-left: 20px;
+}
+
+.xanadu-body li {
+  margin-bottom: 2px;
+}
+
+// Highlighted terms with cluster-based colors and connection lines
+.highlight-term {
+  padding: 0 1px;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  position: relative;
+  text-decoration: none; // Remove default underline
+  
+  // Custom underline using pseudo-element to avoid descender cutouts
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 1.5px;
+    transition: all 0.2s ease;
+    opacity: 1;
+  }
+  
+  // Generate cluster-based underline colors using map
+  @each $cluster, $color in $cluster-colors {
+    &[data-cluster="#{$cluster}"]::after { 
+      background-color: $color; 
+    }
+  }
+  
+  &:hover, &.highlighted {
+    &::after {
+      height: 2.5px;
+      opacity: 0; // Fade underline to transparent on hover
+    }
+  }
+  
+  // Generate cluster-based background highlighting on hover using map  
+  @each $cluster, $color in $cluster-colors {
+    &[data-cluster="#{$cluster}"]:hover, 
+    &[data-cluster="#{$cluster}"].highlighted { 
+      background-color: $color; 
+    }
+  }
+}
+
+// Styles for all item types - consolidated for DRY code
+.product-item, .capability-item, .blog-item, .stack-item {
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  
+  // Default hover state
+  &:hover, &.highlighted {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  strong {
+    color: $xanadu-text;
+    font-weight: bold;
+  }
+}
+
+// Blog item link wrapper
+.blog-item-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  
+  &:hover {
+    text-decoration: none;
+  }
+  
+  &:visited {
+    color: inherit;
+  }
+}
+
+// Blog item specific styling
+.blog-item {
+  .post-meta {
+    font-size: 10px;
+    color: darken($xanadu-text, 20%);
+    margin-top: 4px;
+    font-style: italic;
+    text-decoration: none;
+  }
+}
+
+// Connection lines between panes
+.xanadu-container {
+  position: relative;
+}
+
+// Active connection line overlay
+.connection-line {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.6);
+  height: 1.5px;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  
+  &.active {
+    opacity: 1;
+  }
+  
+  // Generate connection line colors using map - matching underline colors exactly
+  @each $cluster, $color in $cluster-colors {
+    &[data-connection="#{$cluster}"] { 
+      background: $color;
+    }
+  }
+}
+
+// Definition items in right pane - more subtle
+.definition-section {
+  h3 {
+    border-bottom: 1px solid $xanadu-border;
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+}
+
+.definition-item {
+  margin-bottom: 12px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-left: 2px solid $xanadu-border;
+  border-radius: 0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  
+  // Generate definition term highlight colors using map
+  @each $term, $colors in $definition-colors {
+    &[data-term="#{$term}"] {
+      &:hover, &.highlighted {
+        background-color: nth($colors, 1);
+        border-left-color: nth($colors, 2);
+      }
+    }
+  }
+  
+  // Default hover state
+  &:hover, &.highlighted {
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  strong {
+    color: $xanadu-text;
+    font-weight: bold;
+  }
+}
+
+// Responsive grid - more compact
+.responsive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 12px 0;
+  
+  @media (min-width: $tablet) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.responsive-grid > div {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  border: 1px solid $xanadu-border;
+  border-radius: 0;
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    color: $xanadu-text;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  
+  ul {
+    margin: 0;
+    padding-left: 16px;
+  }
+  
+  li {
+    margin-bottom: 3px;
+    font-size: 11px;
+  }
+}
+
+// Links - simple black underlined
+.xanadu-body a {
+  color: $xanadu-text;
+  text-decoration: underline;
+  transition: none;
+  
+  &:hover {
+    color: $xanadu-text;
+    background-color: $highlight-yellow;
+  }
+  
+  &:visited {
+    color: $xanadu-text;
+  }
+}
+
+// Scrollbar styling - more authentic
+.pane-content {
+  margin-right: -1px; // Move scrollbar 1px to the right
+}
+
+.pane-content::-webkit-scrollbar {
+  width: 16px;
+}
+
+.pane-content::-webkit-scrollbar-track {
+  background: $xanadu-scrollbar-thumb;
+  border: 1px solid $xanadu-border;
+}
+
+.pane-content::-webkit-scrollbar-thumb {
+  background: $xanadu-scrollbar;
+  border: 1px solid $xanadu-border;
+  
+  &:hover {
+    background: darken($xanadu-scrollbar, 10%);
+  }
+}
+
+// Remove fancy animations for more authentic feel
+.highlight-term.highlighted,
+.definition-item.highlighted {
+  // No animation - instant highlighting like original
+}
+
+// Mobile-specific adjustments
+@media (max-width: $mobile) {
+  .xanadu-body {
+    padding: 4px;
+    font-size: 11px;
+  }
+  
+  .window-header {
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  
+  .window-control {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .pane-content {
+    padding: 8px;
+  }
+  
+  .definition-item {
+    margin-bottom: 8px;
+    padding: 6px;
+  }
+}
+
+// Print styles
+@media print {
+  .xanadu-body {
+    background: white;
+    color: black;
+  }
+  
+  .xanadu-container {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .xanadu-pane {
+    border: 1px solid black;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+  
+  .highlight-term {
+    background: #ffffcc;
+    border: none;
+  }
+}
+
+// Additional authentic touches
+hr {
+  border: none;
+  border-top: 1px solid $xanadu-border;
+  margin: 8px 0;
+}
+
+// Make the interface feel more like a document viewer
+.left-pane .pane-content {
+  // Slightly different styling for the main content pane
+  line-height: 1.3;
+}
+
+.right-pane .pane-content {
+  // Reference pane styling
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+// Blog page styling - matches xanadu theme without panes
+.blog-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  z-index: 100;
+  
+  @media (max-width: $mobile) {
+    padding: 20px 10px;
+  }
+}
+
+.blog-header {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  
+  // Mini clock positioning
+  .mini-clock-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-decoration: none;
+    display: block;
+    z-index: 10;
+    
+    &:hover {
+      background: none;
+    }
+  }
+  
+  .mini-clock {
+    width: 60px;
+    height: 60px;
+    
+    @media (max-width: $mobile) {
+      width: 45px;
+      height: 45px;
+    }
+  }
+  
+  .mini-clock-face {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $xanadu-border;
+    border-radius: 50%;
+    position: relative;
+    background-color: darken($xanadu-bg, 5%);
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+  }
+  
+  .mini-hour-hand, .mini-minute-hand, .mini-second-hand {
+    @include clock-hands(1px);
+  }
+  
+  .mini-hour-hand {
+    height: 25%;
+    background-color: darken($highlight-green, 30%);
+  }
+  
+  .mini-minute-hand {
+    height: 35%;
+    background-color: darken($highlight-cyan, 30%);
+  }
+  
+  .mini-second-hand {
+    height: 40%;
+    background-color: darken($highlight-pink, 30%);
+  }
+  
+  h1 {
+    font-family: $xanadu-font;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+    
+    a {
+      color: $xanadu-text;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  nav {
+    a {
+      color: $xanadu-text;
+      text-decoration: none;
+      margin: 0 15px;
+      font-size: 14px;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+      
+      &.current {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.blog-content {
+  background-color: $xanadu-pane-bg;
+  border: 1px solid $xanadu-border;
+  border-radius: 0;
+  padding: 40px;
+  margin-top: 100px;
+  max-width: 800px;
+  box-shadow: 
+    inset 1px 1px 0 rgba(255, 255, 255, 0.8),
+    2px 2px 8px rgba(0, 0, 0, 0.15);
+  
+  @media (max-width: $mobile) {
+    padding: 25px;
+    margin-top: 75px;
+    max-width: 95%;
+  }
+}
+
+.blog-posts {
+  .post-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .blog-post-item {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba($xanadu-border, 0.5);
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.6);
+      box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .post-meta {
+      font-size: 11px;
+      color: darken($xanadu-text, 20%);
+      font-style: italic;
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .post-title {
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: bold;
+      
+      .post-link {
+        color: $xanadu-text;
+        text-decoration: none;
+        
+        &:hover {
+          text-decoration: underline;
+        }
+        
+        &:visited {
+          color: $xanadu-text;
+        }
+      }
+    }
+    
+    .post-excerpt {
+      font-size: 12px;
+      line-height: 1.4;
+      color: $xanadu-text;
+      
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Individual post styling
+.post {
+  .post-header {
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba($xanadu-border, 0.3);
+    padding-bottom: 20px;
+    
+    .post-title {
+      font-family: $xanadu-font;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      color: $xanadu-text;
+      line-height: 1.3;
+    }
+    
+    .post-meta {
+      font-size: 12px;
+      color: darken($xanadu-text, 20%);
+      font-style: italic;
+      margin: 0;
+    }
+    
+    .post-metadata {
+      margin-top: 15px;
+      
+      .post-authors, .post-acknowledgments {
+        font-size: 12px;
+        color: darken($xanadu-text, 15%);
+        margin: 6px 0;
+        line-height: 1.3;
+      }
+      
+      .post-authors {
+        font-weight: 500;
+      }
+    }
+  }
+  
+  .post-content {
+    line-height: 1.4;
+    color: $xanadu-text;
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: $xanadu-font;
+      color: $xanadu-text;
+      margin: 20px 0 10px 0;
+      font-weight: bold;
+    }
+    
+    h1 { font-size: 20px; }
+    h2 { font-size: 18px; }
+    h3 { font-size: 16px; }
+    h4, h5, h6 { font-size: 14px; }
+    
+    p {
+      margin: 12px 0;
+      font-size: 13px;
+    }
+    
+    ul, ol {
+      margin: 12px 0;
+      padding-left: 20px;
+      
+      li {
+        margin-bottom: 6px;
+        font-size: 13px;
+      }
+    }
+    
+    blockquote {
+      margin: 16px 0;
+      padding: 10px 15px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-left: 3px solid $xanadu-border;
+      font-style: italic;
+      
+      p {
+        margin: 0;
+      }
+    }
+    
+    code {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 2px 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    
+    pre {
+      background-color: rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      overflow-x: auto;
+      margin: 12px 0;
+      border: 1px solid rgba($xanadu-border, 0.5);
+      
+      code {
+        background: none;
+        padding: 0;
+      }
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 12px;
+      
+      th, td {
+        border: 1px solid $xanadu-border;
+        padding: 6px 8px;
+        text-align: left;
+      }
+      
+      th {
+        background-color: rgba(255, 255, 255, 0.4);
+        font-weight: bold;
+      }
+    }
+    
+    figure {
+      margin: 20px 0;
+      text-align: center;
+      
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      
+      figcaption {
+        font-size: 11px;
+        font-style: italic;
+        color: darken($xanadu-text, 20%);
+        margin-top: 8px;
+      }
+    }
+    
+    a {
+      color: $xanadu-text;
+      text-decoration: underline;
+      
+      &:hover {
+        background-color: rgba($highlight-yellow, 0.3);
+      }
+      
+      &:visited {
+        color: $xanadu-text;
+      }
+    }
+  }
+  
+  .post-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba($xanadu-border, 0.3);
+    
+    p {
+      margin: 0;
+      font-size: 13px;
+    }
+    
+    a {
+      color: $xanadu-text;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+} 

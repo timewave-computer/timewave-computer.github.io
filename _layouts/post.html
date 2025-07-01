@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+
+{%- include head.html -%}
+
+<body class="xanadu-body">
+  
+  <!-- Analog Clock - Background Layer -->
+  <div class="analog-clock">
+    <div class="clock-face">
+      <div class="hour-hand"></div>
+      <div class="minute-hand"></div>
+      <div class="second-hand"></div>
+    </div>
+  </div>
+
+  <div class="blog-container">
+    <header class="blog-header">
+      <!-- Mini Clock - Top Left -->
+      <a href="{{ "/" | relative_url }}" class="mini-clock-link">
+        <div class="mini-clock">
+          <div class="mini-clock-face">
+            <div class="mini-hour-hand"></div>
+            <div class="mini-minute-hand"></div>
+            <div class="mini-second-hand"></div>
+          </div>
+        </div>
+      </a>
+    </header>
+
+    <main class="blog-content">
+      <article class="post">
+        <header class="post-header">
+          <h1 class="post-title">{{ page.title | escape }}</h1>
+          <p class="post-meta">
+            {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+            {{ page.date | date: date_format }}
+            {%- if page.authors -%}
+              &nbsp;&nbsp;•&nbsp;&nbsp;{{ page.authors }}
+            {%- endif -%}
+            {%- if page.author -%}
+              &nbsp;&nbsp;•&nbsp;&nbsp;<span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ page.author }}</span></span>
+            {%- endif -%}
+          </p>
+          
+          {%- if page.acknowledgments -%}
+          <div class="post-metadata">
+            <p class="post-acknowledgments"><em>{{ page.acknowledgments }}</em></p>
+          </div>
+          {%- endif -%}
+        </header>
+
+        <div class="post-content">
+          {{ content }}
+        </div>
+
+        <footer class="post-footer">
+          <p><a href="{{ "/" | relative_url }}">← Back home</a></p>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script src="{{ '/assets/js/clock.js' | relative_url }}"></script>
+
+</body>
+</html> 
